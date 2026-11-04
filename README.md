@@ -49,10 +49,16 @@ Other languages with a WebAssembly runtime can load the same module. Its interfa
 
 You need `rustup`, which installs the pinned Rust version, plus `uv`, Node.js 20 or later, and Go 1.25 or later.
 
-Run every language's tests:
+Run every language's tests, including installing each built package in an empty project:
 
 ```bash
 scripts/test-all.sh
+```
+
+Check a published version the same way, with `python`, `npm`, `rust` or `go`:
+
+```bash
+scripts/acceptance.sh python v1.2.3
 ```
 
 After changing the validator, rebuild the WebAssembly module and commit the Go copy, because `go get` only sees files in the repository:
@@ -71,6 +77,17 @@ To release, set the new version in `crates/appsync-scalars/Cargo.toml`, `binding
 git tag v1.2.3 && git push origin v1.2.3
 ```
 
-The workflow repeats every check, publishes to crates.io, PyPI and npm, and adds the `bindings/go/v1.2.3` tag Go needs. It skips anything already on a registry, so rerunning a partly failed release is safe.
+The workflow repeats every check, publishes to crates.io, PyPI and npm, and adds the `bindings/go/v1.2.3` tag Go needs. It then installs each package from its registry and checks it against every recorded AppSync result. It skips anything already on a registry, so rerunning a partly failed release is safe.
 
 Publishing stores no tokens. Each registry needs a trusted publisher for this repository, with the workflow `ci.yml` and the environment `release`. PyPI can set one up before the first release. crates.io and npm need the first version published by hand, and npm's publisher must allow `npm publish`.
+
+### Release candidates
+
+To try a release on the real registries first, use a version like `1.2.3-rc.1`, written as `1.2.3rc1` in `pyproject.toml`, and push the tag `v1.2.3-rc.1`. The same workflow runs, and normal installs keep getting the last stable version. Release candidates stay in each registry's version history, so save them for risky changes.
+
+| Language | Install a release candidate |
+|---|---|
+| Python | `pip install appsync-scalars==1.2.3rc1` |
+| JavaScript and TypeScript | `npm install appsync-scalars@next` |
+| Rust | `cargo add appsync-scalars@=1.2.3-rc.1` |
+| Go | `go get github.com/wbgoodwin/appsync-scalars/bindings/go@v1.2.3-rc.1` |

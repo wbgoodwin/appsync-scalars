@@ -1,0 +1,12 @@
+# scripts/acceptance.sh adds the appsync-scalars dependency, either from crates.io or a built package.
+[package]
+name = "appsync-scalars-acceptance"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+# arbitrary_precision keeps integers and decimals like 9223372036854775808 and 1.0 exact.
+serde_json = { version = "1", features = ["arbitrary_precision"] }
+
+[workspace]
