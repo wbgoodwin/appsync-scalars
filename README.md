@@ -110,15 +110,14 @@ scripts/build-wasm.sh
 
 ## Releasing
 
-CircleCI runs the tests on every push, and also builds and tests a wheel on Linux, macOS and Windows on `main`. Pushing a version tag repeats all of that and then publishes to crates.io, PyPI and npm.
+GitHub Actions runs the tests, and builds and tests a wheel on Linux, macOS and Windows, for every pull request and push to `main`.
 
-To release, set the new version in `crates/appsync-scalars/Cargo.toml`, `bindings/python/pyproject.toml` and `bindings/js/package.json`, merge to `main`, then push both tags. Go finds a module in a subdirectory by the second one.
+To release, set the new version in `crates/appsync-scalars/Cargo.toml`, `bindings/python/pyproject.toml` and `bindings/js/package.json`, merge to `main`, then push a tag:
 
 ```bash
-git tag v1.2.3 && git tag bindings/go/v1.2.3 && git push origin v1.2.3 bindings/go/v1.2.3
+git tag v1.2.3 && git push origin v1.2.3
 ```
 
-The publish jobs skip anything already on a registry, so rerunning a partly failed release is safe. They use a CircleCI context named `appsync-scalars-release`:
+The workflow repeats every check, publishes to crates.io, PyPI and npm, and adds the `bindings/go/v1.2.3` tag Go needs. It skips anything already on a registry, so rerunning a partly failed release is safe.
 
-- **crates.io** reads a token from the context's `CARGO_REGISTRY_TOKEN` variable.
-- **PyPI and npm** store no token. They trust this project's CircleCI identity, which you set up under each package's trusted publisher settings. npm's must allow `npm publish`.
+Publishing stores no tokens. Each registry needs a trusted publisher for this repository, with the workflow `ci.yml` and the environment `release`. PyPI can set one up before the first release. crates.io and npm need the first version published by hand, and npm's publisher must allow `npm publish`.

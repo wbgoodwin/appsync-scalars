@@ -1,0 +1,267 @@
+name: CI
+
+# Every pull request and push to main runs the tests, then builds and tests a wheel on each
+# platform. A tag like v1.2.3 does the same and then publishes. See "Releasing" in README.md.
+on:
+  push:
+    branches: [main]
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+  pull_request:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  rust:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: rustup toolchain install
+      - name: Lint
+        run: cargo clippy --workspace --all-targets -- -D warnings
+      - name: Test, including the recorded AppSync results
+        run: cargo test
+
+  wasm:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: rustup toolchain install
+      - name: Build the WebAssembly module
+        run: scripts/build-wasm.sh
+      - name: Check the Go module's committed copy is current
+        run: git diff --exit-code --stat -- bindings/go/appsync_scalars.wasm
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: wasm
+          path: bindings/js/wasm.generated.js
+          if-no-files-found: error
+
+  javascript:
+    needs: wasm
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["20", "24", "26"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+          package-manager-cache: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: wasm
+          path: bindings/js
+      - name: Test
+        working-directory: bindings/js
+        run: node --test
+
+  go:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        go: ["1.25", "1.27"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: ${{ matrix.go }}
+          cache: false
+      - name: Test without cgo
+        working-directory: bindings/go
+        run: CGO_ENABLED=0 go test ./...
+      - name: Test with the race detector
+        working-directory: bindings/go
+        run: go test -race ./...
+
+  wheel:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Zig links against an old glibc, so one wheel runs on old and new Linux versions.
+          - os: ubuntu-24.04
+            maturin: maturin[zig]==1.16.0
+            args: --zig --compatibility manylinux2014
+          - os: ubuntu-24.04-arm
+            maturin: maturin[zig]==1.16.0
+            args: --zig --compatibility manylinux2014
+          - os: macos-15
+            maturin: maturin==1.16.0
+          - os: macos-15-intel
+            maturin: maturin==1.16.0
+          - os: windows-2025
+            maturin: maturin==1.16.0
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: 0.13.0
+          enable-cache: false
+      - run: rustup toolchain install
+      - name: Build the wheel
+        env:
+          MATURIN: ${{ matrix.maturin }}
+          ARGS: ${{ matrix.args }}
+        run: |
+          # shellcheck disable=SC2086 # ARGS holds several flags
+          uvx --from "$MATURIN" maturin build --release --strip $ARGS \
+            --manifest-path bindings/python/Cargo.toml --out dist
+      - name: Test the wheel
+        run: scripts/test-wheel.sh
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: python-${{ matrix.os }}
+          path: dist
+          if-no-files-found: error
+
+  sdist:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: 0.13.0
+          enable-cache: false
+      - run: rustup toolchain install
+      - name: Build the source package
+        run: uvx maturin==1.16.0 sdist --manifest-path bindings/python/Cargo.toml --out dist
+      - name: Install it and check it works
+        run: |
+          uv run --no-project --python 3.14 --with ./dist/*.tar.gz python -c \
+            "import appsync_scalars as a; assert a.is_aws_date('2021-01-11')"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: python-sdist
+          path: dist
+          if-no-files-found: error
+
+  check-release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [rust, wasm, javascript, go, wheel, sdist]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check package versions match the tag
+        run: scripts/check-release.sh "$GITHUB_REF_NAME"
+
+  # The publish jobs skip anything already on a registry, so rerunning a partly failed release
+  # is safe. They use trusted publishing, so no registry tokens are stored in this repository.
+  publish-crate:
+    needs: check-release
+    runs-on: ubuntu-24.04
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: rustup toolchain install
+      - name: Check whether this version is already on crates.io
+        id: existing
+        run: |
+          url="https://crates.io/api/v1/crates/appsync-scalars/${GITHUB_REF_NAME#v}"
+          if curl -fsS -o /dev/null -A 'appsync-scalars release job' "$url"; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Get a temporary crates.io token
+        if: steps.existing.outputs.published != 'true'
+        id: auth
+        uses: rust-lang/crates-io-auth-action@3268eb413133e2960fa4ae0e963ca76380c54cd9 # v1.0.6
+      - name: Publish to crates.io
+        if: steps.existing.outputs.published != 'true'
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
+        run: cargo publish --locked -p appsync-scalars
+
+  publish-python:
+    needs: check-release
+    runs-on: ubuntu-24.04
+    environment: release
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: python-*
+          merge-multiple: true
+          path: dist
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+        with:
+          skip-existing: true
+
+  publish-npm:
+    needs: check-release
+    runs-on: ubuntu-24.04
+    environment: release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "24"
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: wasm
+          path: bindings/js
+      - name: Publish to npm, unless this version is already there
+        # The package's prepack script needs Rust, so it's skipped in favor of the module the
+        # tests ran on.
+        working-directory: bindings/js
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          if [ -n "$(npm view "appsync-scalars@$version" version 2>/dev/null || true)" ]; then
+            echo "appsync-scalars $version is already on npm"
+          else
+            cp ../../README.md .
+            npm publish --ignore-scripts --access public
+          fi
+
+  tag-go-module:
+    needs: check-release
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true # Pushes the tag below.
+      # Go finds a module in a subdirectory by a tag with the directory as a prefix.
+      - name: Tag this commit for Go
+        run: |
+          tag="bindings/go/$GITHUB_REF_NAME"
+          if [ -z "$(git ls-remote origin "refs/tags/$tag")" ]; then
+            git tag "$tag" "$GITHUB_SHA"
+            git push origin "refs/tags/$tag"
+          fi
