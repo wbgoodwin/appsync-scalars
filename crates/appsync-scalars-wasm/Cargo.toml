@@ -1,0 +1,12 @@
+[package]
+name = "appsync-scalars-wasm"
+version = "0.1.0"
+edition = "2024"
+publish = false
+description = "WebAssembly build of appsync-scalars, shared by the npm package and Go module."
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+appsync-scalars = { path = "../appsync-scalars" }

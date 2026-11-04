@@ -1,0 +1,3084 @@
+{
+  "format_version": 1,
+  "scalar": "AWSTime",
+  "recorded_at": "2026-11-04",
+  "region": "us-east-1",
+  "cases": [
+    {
+      "group": "documented",
+      "value": "12:00:00.2",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.2"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.2"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.2"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "12:00:00.277",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.277"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.277"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.277"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "12:00:00.123456789",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.123456789"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.123456789"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.123456789"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "12:30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "12:30Z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30Z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30Z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30Z"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "12:30:24Z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24Z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24Z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24Z"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "12:30:24-07:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-07:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-07:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-07:00"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "12:30:24.500+05:30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24.500+05:30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24.500+05:30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24.500+05:30"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "12:30:24.500+05:30:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24.500+05:30:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24.500+05:30:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24.500+05:30:00"
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "00:00"
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "23:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "23:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "23:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "23:59"
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "24:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='24:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `24:00` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "24:01",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='24:01'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `24:01` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "25:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='25:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `25:00` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "12:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:59"
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "12:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:60'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:60` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "12:99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:99'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:99` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "00:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "00:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "00:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "00:00:00"
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "23:59:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "23:59:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "23:59:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "23:59:59"
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "23:59:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='23:59:60'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `23:59:60` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "23:59:61",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='23:59:61'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `23:59:61` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "24:00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='24:00:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `24:00:00` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "24:00:01",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='24:00:01'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `24:00:01` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "12:00:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:60'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:60` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "12:00:99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:99'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:99` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "24:00:00.000",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='24:00:00.000'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `24:00:00.000` as a valid time."
+      }
+    },
+    {
+      "group": "clock-range",
+      "value": "24:00:00.001",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='24:00:00.001'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `24:00:00.001` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "1:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1:00` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "12:0",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:0'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:0` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "012:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='012:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `012:00` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "12:000",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:000'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:000` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "12:00:0",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:0'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:0` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "12:00:000",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:000'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:000` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "1:2:3",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1:2:3'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1:2:3` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "12",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "1200",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1200'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1200` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "120000",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='120000'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `120000` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "12:",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "12:00:",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": ":00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=':00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `:00` as a valid time."
+      }
+    },
+    {
+      "group": "field-width",
+      "value": "12::00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12::00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12::00` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.1",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.1"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.1"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.1"
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.12",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.12"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.12"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.12"
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.123",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.123"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.123"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.123"
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.1234",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.1234"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.1234"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.1234"
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.12345",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.12345"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.12345"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.12345"
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.123456",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.123456"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.123456"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.123456"
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.1234567",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.1234567"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.1234567"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.1234567"
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.12345678",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:00.12345678"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:00.12345678"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:00.12345678"
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.1234567890",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00.1234567890'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00.1234567890` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.123456789012",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00.123456789012'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00.123456789012` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-digits",
+      "value": "12:00:00.12345678901234567890",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00.12345678901234567890'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00.12345678901234567890` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:34.",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:34."
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:34."
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:34."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00,5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00,5'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00,5` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00.x",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00.x'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00.x` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00.1x",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00.1x'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00.1x` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00x5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00x5'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00x5` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00. 5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00. 5'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00. 5` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00.-1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00.-1'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00.-1` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00.+1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00.+1'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00.+1` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00.٣",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00.٣'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00.٣` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:30.5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30.5'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30.5` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12.5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12.5'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12.5` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:00:00..5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00..5'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00..5` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12:30.",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30.'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30.` as a valid time."
+      }
+    },
+    {
+      "group": "fraction-form",
+      "value": "12.",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12.'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12.` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "12:00 PM",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00 PM'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00 PM` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "12:00AM",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00AM'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00AM` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "T12:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='T12:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `T12:00` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "T12:00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='T12:00:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `T12:00:00` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "t12:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='t12:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `t12:00` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "noon",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='noon'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `noon` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "12h00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12h00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12h00` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "12-00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12-00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12-00` as a valid time."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "12.00.00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12.00.00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12.00.00` as a valid time."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": " 12:00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=' 12:00:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize ` 12:00:00` as a valid time."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "12:00:00 ",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00 '}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00 ` as a valid time."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "12:00:00\n",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:00:00\n'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:00:00\n` as a valid time."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "\t12:00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='\t12:00:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `\t12:00:00` as a valid time."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "12: 00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12: 00:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12: 00:00` as a valid time."
+      }
+    },
+    {
+      "group": "lookalike-characters",
+      "value": "١٢:٠٠",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='١٢:٠٠'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `١٢:٠٠` as a valid time."
+      }
+    },
+    {
+      "group": "lookalike-characters",
+      "value": "１２:００",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='１２:００'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `１２:００` as a valid time."
+      }
+    },
+    {
+      "group": "lookalike-characters",
+      "value": "12：00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12：00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12：00` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+05:30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+05:30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+05:30"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+00:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+00:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+00:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+00:00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-00:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-00:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-00:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-00:00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30:15",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+05:30:15"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+05:30:15"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+05:30:15"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-07:00:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-07:00:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-07:00:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-07:00:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+14:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+14:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+14:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+14:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-12:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-12:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-12:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-12:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+18:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+18:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+18:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+18:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-18:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-18:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-18:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-18:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+18:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+18:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+18:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+18:00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-18:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-18:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-18:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-18:00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+18:01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+18:01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+18:01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+18:01"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-18:01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-18:01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-18:01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-18:01"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+18:00:01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+18:00:01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+18:00:01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+18:00:01"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-18:00:01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-18:00:01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-18:00:01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-18:00:01"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+19:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+19:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+19:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+19:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-19:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-19:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-19:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-19:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+23:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+23:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+23:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+23:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-23:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-23:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-23:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-23:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+24:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+24:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+24:00` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+99:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+99:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+99:00` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+99:99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+99:99'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+99:99` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+05:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+05:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+05:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:60'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:60` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:99'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:99` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+05:30:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+05:30:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+05:30:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:30:60'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:30:60` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30:99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:30:99'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:30:99` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+00` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24-00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24-00` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+18",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+18'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+18` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-18",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24-18'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24-18` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+19",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+19'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+19` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-19",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24-19'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24-19` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+23",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+23'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+23` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+24",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+24'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+24` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+99'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+99` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+5'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+5` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+23:59:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24+23:59:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24+23:59:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24+23:59:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-23:59:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24-23:59:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24-23:59:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24-23:59:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+24:00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+24:00:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+24:00:00` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+00:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+00:60'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+00:60` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+00:00:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+00:00:60'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+00:00:60` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30:24z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30:24z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30:24z"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-05",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24-05'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24-05` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+0530",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+0530'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+0530` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-0530",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24-0530'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24-0530` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+053015",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+053015'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+053015` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+5:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+5:30'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+5:30` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:3",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:3'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:3` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30:",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:30:'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:30:` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30:1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:30:1'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:30:1` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30:15.5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:30:15.5'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:30:15.5` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+05:30:15Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+05:30:15Z'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+05:30:15Z` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24Z+00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24Z+00:00'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24Z+00:00` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24ZZ",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24ZZ'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24ZZ` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24 Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24 Z'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24 Z` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24 +05:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24 +05:30'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24 +05:30` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+ 05:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+ 05:30'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+ 05:30` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24-07:00Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24-07:00Z'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24-07:00Z` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24UTC",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24UTC'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24UTC` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24GMT",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24GMT'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24GMT` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24UTC+1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24UTC+1'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24UTC+1` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24PST",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24PST'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24PST` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24[UTC]",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24[UTC]'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24[UTC]` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24Z[UTC]",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24Z[UTC]'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24Z[UTC]` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+01:00[Europe/Paris]",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+01:00[Europe/Paris]'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+01:00[Europe/Paris]` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24−05:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24−05:30'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24−05:30` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24±05:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24±05:30'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24±05:30` as a valid time."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "12:30:24+٠٥:٣٠",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24+٠٥:٣٠'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24+٠٥:٣٠` as a valid time."
+      }
+    },
+    {
+      "group": "offset-without-seconds",
+      "value": "12:30+05:30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30+05:30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30+05:30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30+05:30"
+      }
+    },
+    {
+      "group": "offset-without-seconds",
+      "value": "12:30+05:30:15",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30+05:30:15"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30+05:30:15"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30+05:30:15"
+      }
+    },
+    {
+      "group": "offset-without-seconds",
+      "value": "12:30-07:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30-07:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30-07:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30-07:00"
+      }
+    },
+    {
+      "group": "offset-without-seconds",
+      "value": "12:30+05",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30+05'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30+05` as a valid time."
+      }
+    },
+    {
+      "group": "offset-without-seconds",
+      "value": "12:30z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:30z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:30z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:30z"
+      }
+    },
+    {
+      "group": "empty-fraction-offset",
+      "value": "12:00:34.Z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:34.Z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:34.Z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:34.Z"
+      }
+    },
+    {
+      "group": "empty-fraction-offset",
+      "value": "12:00:34.z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:34.z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:34.z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:34.z"
+      }
+    },
+    {
+      "group": "empty-fraction-offset",
+      "value": "12:00:34.+05:30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "12:00:34.+05:30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "12:00:34.+05:30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "12:00:34.+05:30"
+      }
+    },
+    {
+      "group": "other-scalar",
+      "value": "2021-01-11T12:30:24Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11T12:30:24Z'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11T12:30:24Z` as a valid time."
+      }
+    },
+    {
+      "group": "other-scalar",
+      "value": "2021-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=''}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": " ",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=' '}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize ` ` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "null",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='null'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `null` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "undefined",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='undefined'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `undefined` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "NaN",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='NaN'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `NaN` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "Infinity",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='Infinity'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `Infinity` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "now",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='now'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `now` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "today",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='today'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `today` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "abc",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='abc'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `abc` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "0",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='0'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `0` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "-1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='-1'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-1` as a valid time."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "😀",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='😀'}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `😀` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": null,
+      "input_variable": {
+        "result": "accepted",
+        "value": null
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": null
+      },
+      "output": {
+        "result": "accepted",
+        "value": null
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": true,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'BooleanValue{value=true}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `true` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": false,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'BooleanValue{value=false}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `false` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 0,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=0}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `0` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 1,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=1}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 20210111,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=20210111}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `20210111` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 1610368224,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=1610368224}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1610368224` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 1.5,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1.5}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1.5` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 1e+3,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1E+3}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1000.0` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": [],
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ArrayValue{values=[]}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `[]` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": [
+        "2021-01-11"
+      ],
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ArrayValue{values=[StringValue{value='2021-01-11'}]}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `[2021-01-11]` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": {},
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ObjectValue{objectFields=[]}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `{}` as a valid time."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": {
+        "a": 1
+      },
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ObjectValue{objectFields=[ObjectField{name='a', value=IntValue{value=1}}]}' is not a valid 'AWSTime' @ 'inputTime'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `{a=1}` as a valid time."
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[workspace]
+members = [
+    "bindings/python",
+    "conformance/recorder",
+    "crates/appsync-scalars",
+    "crates/appsync-scalars-wasm",
+]
+# The Python extension needs a Python toolchain, so maturin builds it on request.
+default-members = [
+    "conformance/recorder",
+    "crates/appsync-scalars",
+    "crates/appsync-scalars-wasm",
+]
+resolver = "3"
+
+[profile.wasm-release]
+inherits = "release"
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

@@ -1,0 +1,15 @@
+[package]
+name = "appsync-scalars"
+version = "0.1.0"
+edition = "2024"
+description = "Validates AWS AppSync date and time scalar values."
+license = "MIT"
+repository = "https://github.com/wbgoodwin/appsync-scalars"
+readme = "../../README.md"
+keywords = ["appsync", "aws", "graphql", "validation", "iso8601"]
+categories = ["date-and-time", "no-std"]
+# These tests read the shared cases in conformance/, which aren't part of the crate.
+exclude = ["tests/shared_cases.rs"]
+
+[dev-dependencies]
+serde_json = { version = "1", features = ["arbitrary_precision"] }

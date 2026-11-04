@@ -1,0 +1,291 @@
+version: 2.1
+
+# Every push runs the tests. Main and release tags also build a wheel on each platform and test
+# it there. A tag like v1.2.3 then publishes to crates.io, PyPI and npm. See README.md.
+
+commands:
+  install-uv:
+    steps:
+      - run:
+          name: Install uv
+          command: |
+            curl -LsSf https://astral.sh/uv/0.13.0/install.sh | sh
+            echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$BASH_ENV"
+  keep-dist:
+    steps:
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+
+jobs:
+  rust:
+    docker:
+      - image: cimg/rust:1.99.1
+    steps:
+      - checkout
+      - run:
+          name: Lint
+          command: cargo clippy --workspace --all-targets -- -D warnings
+      - run:
+          name: Test, including the recorded AppSync results
+          command: cargo test
+
+  wasm:
+    docker:
+      - image: cimg/rust:1.99.1
+    steps:
+      - checkout
+      - run:
+          name: Build the WebAssembly module
+          command: |
+            rustup target add wasm32-unknown-unknown
+            scripts/build-wasm.sh
+      - run:
+          name: Check the Go module's committed copy is current
+          command: git diff --exit-code --stat -- bindings/go/appsync_scalars.wasm
+      - persist_to_workspace:
+          root: .
+          paths:
+            - bindings/js/wasm.generated.js
+
+  python:
+    docker:
+      - image: cimg/rust:1.99.1
+    steps:
+      - checkout
+      - install-uv
+      - run:
+          name: Test on the oldest and newest supported Python
+          working_directory: bindings/python
+          command: |
+            for python in 3.10 3.14; do
+              uv run --python "$python" --group dev pytest -q
+            done
+
+  javascript:
+    parameters:
+      node:
+        type: string
+    docker:
+      - image: cimg/node:<< parameters.node >>
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Test
+          working_directory: bindings/js
+          command: node --test
+
+  go:
+    parameters:
+      go:
+        type: string
+    docker:
+      - image: cimg/go:<< parameters.go >>
+    steps:
+      - checkout
+      - run:
+          name: Test without cgo
+          working_directory: bindings/go
+          command: CGO_ENABLED=0 go test ./...
+      - run:
+          name: Test with the race detector
+          working_directory: bindings/go
+          command: go test -race ./...
+
+  wheel-linux:
+    parameters:
+      size:
+        type: string
+    docker:
+      - image: cimg/rust:1.99.1
+    resource_class: << parameters.size >>
+    steps:
+      - checkout
+      - install-uv
+      - run:
+          name: Build a wheel for old and new Linux versions
+          command: |
+            uvx --from 'maturin[zig]==1.16.0' maturin build --release --strip --zig \
+              --compatibility manylinux2014 \
+              --manifest-path bindings/python/Cargo.toml --out dist
+      - run:
+          name: Test the wheel
+          command: scripts/test-wheel.sh
+      - keep-dist
+
+  wheel-macos:
+    macos:
+      xcode: 27.1.0
+    resource_class: m4pro.medium
+    steps:
+      - checkout
+      - install-uv
+      - run:
+          name: Install Rust
+          command: |
+            curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal --default-toolchain none
+            echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> "$BASH_ENV"
+      - run:
+          name: Build one wheel for Apple silicon and Intel
+          command: |
+            rustup toolchain install
+            rustup target add aarch64-apple-darwin x86_64-apple-darwin
+            uvx maturin==1.16.0 build --release --strip --target universal2-apple-darwin \
+              --manifest-path bindings/python/Cargo.toml --out dist
+      - run:
+          name: Test the wheel
+          command: scripts/test-wheel.sh
+      - keep-dist
+
+  wheel-windows:
+    machine:
+      image: windows-server-2022-gui:current
+      shell: bash.exe
+    resource_class: windows.medium
+    steps:
+      - checkout
+      # PATH changes don't carry between steps here, so this is one step.
+      - run:
+          name: Build and test a wheel
+          command: |
+            set -euo pipefail
+            curl -sSf -o rustup-init.exe https://win.rustup.rs/x86_64
+            ./rustup-init.exe -y --profile minimal --default-toolchain none
+            powershell.exe -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/0.13.0/install.ps1 | iex"
+            export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+            rustup toolchain install
+            uvx maturin==1.16.0 build --release --strip \
+              --manifest-path bindings/python/Cargo.toml --out dist
+            scripts/test-wheel.sh
+      - keep-dist
+
+  sdist:
+    docker:
+      - image: cimg/rust:1.99.1
+    steps:
+      - checkout
+      - install-uv
+      - run:
+          name: Build the source package
+          command: uvx maturin==1.16.0 sdist --manifest-path bindings/python/Cargo.toml --out dist
+      - keep-dist
+
+  check-release:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - checkout
+      - run:
+          name: Check package versions match the tag
+          command: scripts/check-release.sh "$CIRCLE_TAG"
+
+  publish-crate:
+    docker:
+      - image: cimg/rust:1.99.1
+    steps:
+      - checkout
+      - run:
+          name: Publish to crates.io, unless this version is already there
+          command: |
+            version="${CIRCLE_TAG#v}"
+            url="https://crates.io/api/v1/crates/appsync-scalars/$version"
+            if curl -fsS -o /dev/null -A 'appsync-scalars release job' "$url"; then
+              echo "appsync-scalars $version is already on crates.io"
+            else
+              cargo publish --locked -p appsync-scalars
+            fi
+
+  publish-python:
+    docker:
+      - image: cimg/python:3.12
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Publish to PyPI, skipping files already there
+          # twine exchanges CircleCI's identity token for a short-lived PyPI token.
+          command: |
+            pip install --quiet 'twine>=6.1'
+            twine check --strict dist/*
+            twine upload --non-interactive --skip-existing dist/*
+
+  publish-npm:
+    docker:
+      - image: cimg/node:24
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: Publish to npm, unless this version is already there
+          # npm exchanges CircleCI's identity token for a short-lived npm token. The package's
+          # prepack script needs Rust, so it's skipped in favor of the module the tests ran on.
+          working_directory: bindings/js
+          command: |
+            version="${CIRCLE_TAG#v}"
+            if [ -n "$(npm view "appsync-scalars@$version" version 2>/dev/null || true)" ]; then
+              echo "appsync-scalars $version is already on npm"
+            else
+              cp ../../README.md .
+              npm publish --ignore-scripts --access public
+            fi
+
+workflows:
+  test-and-publish:
+    jobs:
+      - rust: &every-push
+          filters:
+            tags:
+              only: /^v\d+\.\d+\.\d+$/
+      - wasm: *every-push
+      - python: *every-push
+      - go:
+          <<: *every-push
+          matrix:
+            parameters:
+              go: ["1.25", "1.27"]
+      - javascript:
+          <<: *every-push
+          requires: [wasm]
+          matrix:
+            parameters:
+              node: ["20.19", "24.11", "26.13"]
+      - wheel-macos: &main-and-releases
+          filters:
+            branches:
+              only: main
+            tags:
+              only: /^v\d+\.\d+\.\d+$/
+      - wheel-windows: *main-and-releases
+      - sdist: *main-and-releases
+      - wheel-linux:
+          <<: *main-and-releases
+          matrix:
+            parameters:
+              size: [medium, arm.medium]
+      - check-release: &releases
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v\d+\.\d+\.\d+$/
+      - publish-crate: &publish
+          <<: *releases
+          context: appsync-scalars-release
+          requires:
+            - check-release
+            - rust
+            - wasm
+            - python
+            - go
+            - javascript
+            - wheel-linux
+            - wheel-macos
+            - wheel-windows
+            - sdist
+      - publish-python: *publish
+      - publish-npm: *publish

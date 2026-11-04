@@ -1,0 +1,3644 @@
+{
+  "format_version": 1,
+  "scalar": "AWSDate",
+  "recorded_at": "2026-11-04",
+  "region": "us-east-1",
+  "cases": [
+    {
+      "group": "documented",
+      "value": "1970-01-01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1970-01-01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1970-01-01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1970-01-01"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "1970-01-01Z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1970-01-01Z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1970-01-01Z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1970-01-01Z"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "1970-01-01-07:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1970-01-01-07:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1970-01-01-07:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1970-01-01-07:00"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "1970-01-01+05:30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1970-01-01+05:30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1970-01-01+05:30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1970-01-01+05:30"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "-2017-05-01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-2017-05-01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-2017-05-01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-2017-05-01"
+      }
+    },
+    {
+      "group": "documented",
+      "value": "-9999-01-01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-9999-01-01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-9999-01-01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-9999-01-01"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "2021-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "1970-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1970-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1970-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1970-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "0001-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "0001-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "0001-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "0001-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "0000-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "0000-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "0000-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "0000-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "9999-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "9999-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "9999-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "9999-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "-0001-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-0001-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-0001-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-0001-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "-2017-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-2017-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-2017-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-2017-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "-9999-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-9999-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-9999-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-9999-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "-0000-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='-0000-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-0000-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "+2021-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='+2021-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `+2021-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "+02021-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+02021-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+02021-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+02021-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "+12021-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+12021-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+12021-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+12021-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "12021-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12021-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12021-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "-12021-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-12021-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-12021-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-12021-01-11"
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "021-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='021-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `021-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "21-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='21-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `21-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "202-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='202-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `202-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-form",
+      "value": "20 21-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='20 21-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `20 21-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+0000-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='+0000-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `+0000-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+00000-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+00000-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+00000-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+00000-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "-00000-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='-00000-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-00000-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+00001-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+00001-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+00001-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+00001-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "-02021-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-02021-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-02021-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-02021-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+100000-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+100000-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+100000-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+100000-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "-100000-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-100000-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-100000-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-100000-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "123456789-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='123456789-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `123456789-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+999999999-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+999999999-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+999999999-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+999999999-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "-999999999-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-999999999-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-999999999-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-999999999-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+0999999999-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+0999999999-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+0999999999-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+0999999999-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "-0999999999-01-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-0999999999-01-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-0999999999-01-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-0999999999-01-11"
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+1000000000-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='+1000000000-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `+1000000000-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "-1000000000-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='-1000000000-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-1000000000-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+9999999999-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='+9999999999-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `+9999999999-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+00000000000-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='+00000000000-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `+00000000000-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "year-width",
+      "value": "+10000000000-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='+10000000000-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `+10000000000-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "long-year-leap",
+      "value": "+10000-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+10000-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+10000-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+10000-02-29"
+      }
+    },
+    {
+      "group": "long-year-leap",
+      "value": "-10000-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-10000-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-10000-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-10000-02-29"
+      }
+    },
+    {
+      "group": "long-year-leap",
+      "value": "+12024-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "+12024-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "+12024-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "+12024-02-29"
+      }
+    },
+    {
+      "group": "long-year-leap",
+      "value": "+10100-02-29",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='+10100-02-29'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `+10100-02-29` as a valid date."
+      }
+    },
+    {
+      "group": "long-year-leap",
+      "value": "-12023-02-29",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='-12023-02-29'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-12023-02-29` as a valid date."
+      }
+    },
+    {
+      "group": "month-range",
+      "value": "2021-00-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-00-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-00-11` as a valid date."
+      }
+    },
+    {
+      "group": "month-range",
+      "value": "2021-12-11",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-12-11"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-12-11"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-12-11"
+      }
+    },
+    {
+      "group": "month-range",
+      "value": "2021-13-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-13-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-13-11` as a valid date."
+      }
+    },
+    {
+      "group": "month-range",
+      "value": "2021-99-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-99-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-99-11` as a valid date."
+      }
+    },
+    {
+      "group": "month-range",
+      "value": "2021-1-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-1-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-1-11` as a valid date."
+      }
+    },
+    {
+      "group": "month-range",
+      "value": "2021-001-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-001-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-001-11` as a valid date."
+      }
+    },
+    {
+      "group": "month-range",
+      "value": "2021-Jan-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-Jan-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-Jan-11` as a valid date."
+      }
+    },
+    {
+      "group": "month-range",
+      "value": "2021--1-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021--1-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021--1-11` as a valid date."
+      }
+    },
+    {
+      "group": "day-range",
+      "value": "2021-01-00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-00'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-00` as a valid date."
+      }
+    },
+    {
+      "group": "day-range",
+      "value": "2021-01-32",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-32'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-32` as a valid date."
+      }
+    },
+    {
+      "group": "day-range",
+      "value": "2021-01-99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-99'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-99` as a valid date."
+      }
+    },
+    {
+      "group": "day-range",
+      "value": "2021-01-1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-1'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-1` as a valid date."
+      }
+    },
+    {
+      "group": "day-range",
+      "value": "2021-01-011",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-011'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-011` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-01-31",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-31"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-31"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-31"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-02-28",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-02-28"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-02-28"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-02-28"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-02-29",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-02-29'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-02-29` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-02-30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-02-30'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-02-30` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-03-31",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-03-31"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-03-31"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-03-31"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-03-32",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-03-32'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-03-32` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-04-30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-04-30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-04-30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-04-30"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-04-31",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-04-31'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-04-31` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-05-31",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-05-31"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-05-31"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-05-31"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-05-32",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-05-32'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-05-32` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-06-30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-06-30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-06-30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-06-30"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-06-31",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-06-31'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-06-31` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-07-31",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-07-31"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-07-31"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-07-31"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-07-32",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-07-32'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-07-32` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-08-31",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-08-31"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-08-31"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-08-31"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-08-32",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-08-32'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-08-32` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-09-30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-09-30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-09-30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-09-30"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-09-31",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-09-31'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-09-31` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-10-31",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-10-31"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-10-31"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-10-31"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-10-32",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-10-32'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-10-32` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-11-30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-11-30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-11-30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-11-30"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-11-31",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-11-31'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-11-31` as a valid date."
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-12-31",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-12-31"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-12-31"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-12-31"
+      }
+    },
+    {
+      "group": "month-length",
+      "value": "2021-12-32",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-12-32'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-12-32` as a valid date."
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "2020-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2020-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2020-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2020-02-29"
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "2000-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2000-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2000-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2000-02-29"
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "1900-02-29",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1900-02-29'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1900-02-29` as a valid date."
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "2100-02-29",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2100-02-29'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2100-02-29` as a valid date."
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "1600-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1600-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1600-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1600-02-29"
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "1000-02-29",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1000-02-29'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1000-02-29` as a valid date."
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "0004-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "0004-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "0004-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "0004-02-29"
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "0000-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "0000-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "0000-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "0000-02-29"
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "-0004-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-0004-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-0004-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-0004-02-29"
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "-0001-02-29",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='-0001-02-29'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-0001-02-29` as a valid date."
+      }
+    },
+    {
+      "group": "leap-year",
+      "value": "-0400-02-29",
+      "input_variable": {
+        "result": "accepted",
+        "value": "-0400-02-29"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "-0400-02-29"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "-0400-02-29"
+      }
+    },
+    {
+      "group": "calendar-cutover",
+      "value": "1582-10-04",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1582-10-04"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1582-10-04"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1582-10-04"
+      }
+    },
+    {
+      "group": "calendar-cutover",
+      "value": "1582-10-05",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1582-10-05"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1582-10-05"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1582-10-05"
+      }
+    },
+    {
+      "group": "calendar-cutover",
+      "value": "1582-10-10",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1582-10-10"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1582-10-10"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1582-10-10"
+      }
+    },
+    {
+      "group": "calendar-cutover",
+      "value": "1582-10-14",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1582-10-14"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1582-10-14"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1582-10-14"
+      }
+    },
+    {
+      "group": "calendar-cutover",
+      "value": "1582-10-15",
+      "input_variable": {
+        "result": "accepted",
+        "value": "1582-10-15"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "1582-10-15"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "1582-10-15"
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "2021/01/11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021/01/11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021/01/11` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "20210111",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='20210111'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `20210111` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "2021-01",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "2021",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "202101",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='202101'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `202101` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "2021-W02-1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-W02-1'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-W02-1` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "2021W021",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021W021'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021W021` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "2021-011",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-011'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-011` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "01-11-2021",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='01-11-2021'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `01-11-2021` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "11/01/2021",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='11/01/2021'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `11/01/2021` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "Jan 11 2021",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='Jan 11 2021'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `Jan 11 2021` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "2021.01.11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021.01.11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021.01.11` as a valid date."
+      }
+    },
+    {
+      "group": "alternate-format",
+      "value": "2021-1-1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-1-1'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-1-1` as a valid date."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": " 2021-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=' 2021-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize ` 2021-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "2021-01-11 ",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11 '}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11 ` as a valid date."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "2021-01-11\n",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11\n'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11\n` as a valid date."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "\t2021-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='\t2021-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `\t2021-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "2021-01-11\u0000",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11\u0000'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11\u0000` as a valid date."
+      }
+    },
+    {
+      "group": "whitespace",
+      "value": "2021 -01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021 -01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021 -01-11` as a valid date."
+      }
+    },
+    {
+      "group": "lookalike-characters",
+      "value": "٢٠٢١-٠١-١١",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='٢٠٢١-٠١-١١'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `٢٠٢١-٠١-١١` as a valid date."
+      }
+    },
+    {
+      "group": "lookalike-characters",
+      "value": "２０２１-０１-１１",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='２０２１-０１-１１'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `２０２１-０１-１１` as a valid date."
+      }
+    },
+    {
+      "group": "lookalike-characters",
+      "value": "2021–01–11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021–01–11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021–01–11` as a valid date."
+      }
+    },
+    {
+      "group": "lookalike-characters",
+      "value": "2021−01−11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021−01−11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021−01−11` as a valid date."
+      }
+    },
+    {
+      "group": "lookalike-characters",
+      "value": "﻿2021-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='﻿2021-01-11'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `﻿2021-01-11` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11Z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11Z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11Z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11Z"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-07:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-07:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-07:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-07:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+00:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+00:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+00:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+00:00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-00:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-00:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-00:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-00:00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30:15",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30:15"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30:15"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30:15"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-07:00:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-07:00:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-07:00:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-07:00:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+14:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+14:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+14:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+14:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-12:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-12:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-12:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-12:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+18:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-18:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+18:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-18:00:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+18:01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+18:01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+18:01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+18:01"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-18:01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-18:01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-18:01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-18:01"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+18:00:01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00:01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00:01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+18:00:01"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-18:00:01",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00:01"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00:01"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-18:00:01"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+19:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+19:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+19:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+19:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-19:00",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-19:00"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-19:00"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-19:00"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+23:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+23:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+23:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+23:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-23:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-23:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-23:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-23:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+24:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+24:00'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+24:00` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+99:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+99:00'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+99:00` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+99:99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+99:99'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+99:99` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+05:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+05:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+05:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:60'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:60` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:99'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:99` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+05:30:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:30:60'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:30:60` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30:99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:30:99'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:30:99` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+00'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+00` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11-00'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11-00` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+18",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+18'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+18` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-18",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11-18'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11-18` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+19",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+19'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+19` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-19",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11-19'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11-19` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+23",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+23'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+23` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+24",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+24'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+24` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+99",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+99'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+99` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+5'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+5` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+23:59:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11+23:59:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11+23:59:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11+23:59:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-23:59:59",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11-23:59:59"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11-23:59:59"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11-23:59:59"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+24:00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+24:00:00'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+24:00:00` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+00:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+00:60'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+00:60` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+00:00:60",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+00:00:60'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+00:00:60` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11z",
+      "input_variable": {
+        "result": "accepted",
+        "value": "2021-01-11z"
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": "2021-01-11z"
+      },
+      "output": {
+        "result": "accepted",
+        "value": "2021-01-11z"
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-05",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11-05'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11-05` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+0530",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+0530'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+0530` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-0530",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11-0530'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11-0530` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+053015",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+053015'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+053015` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+5:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+5:30'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+5:30` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:3",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:3'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:3` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30:",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:30:'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:30:` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30:1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:30:1'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:30:1` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30:15.5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:30:15.5'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:30:15.5` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+05:30:15Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+05:30:15Z'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+05:30:15Z` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11Z+00:00",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11Z+00:00'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11Z+00:00` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11ZZ",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11ZZ'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11ZZ` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11 Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11 Z'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11 Z` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11 +05:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11 +05:30'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11 +05:30` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+ 05:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+ 05:30'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+ 05:30` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11-07:00Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11-07:00Z'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11-07:00Z` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11UTC",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11UTC'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11UTC` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11GMT",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11GMT'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11GMT` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11UTC+1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11UTC+1'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11UTC+1` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11PST",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11PST'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11PST` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11[UTC]",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11[UTC]'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11[UTC]` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11Z[UTC]",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11Z[UTC]'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11Z[UTC]` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+01:00[Europe/Paris]",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+01:00[Europe/Paris]'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+01:00[Europe/Paris]` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11−05:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11−05:30'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11−05:30` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11±05:30",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11±05:30'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11±05:30` as a valid date."
+      }
+    },
+    {
+      "group": "offset",
+      "value": "2021-01-11+٠٥:٣٠",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11+٠٥:٣٠'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11+٠٥:٣٠` as a valid date."
+      }
+    },
+    {
+      "group": "other-scalar",
+      "value": "2021-01-11T00:00:00Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11T00:00:00Z'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11T00:00:00Z` as a valid date."
+      }
+    },
+    {
+      "group": "other-scalar",
+      "value": "2021-01-11T",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11T'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11T` as a valid date."
+      }
+    },
+    {
+      "group": "other-scalar",
+      "value": "12:30:24",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='12:30:24'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `12:30:24` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=''}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": " ",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=' '}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize ` ` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "null",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='null'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `null` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "undefined",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='undefined'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `undefined` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "NaN",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='NaN'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `NaN` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "Infinity",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='Infinity'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `Infinity` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "now",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='now'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `now` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "today",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='today'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `today` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "abc",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='abc'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `abc` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "0",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='0'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `0` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "-1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='-1'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-1` as a valid date."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "😀",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='😀'}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `😀` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": null,
+      "input_variable": {
+        "result": "accepted",
+        "value": null
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": null
+      },
+      "output": {
+        "result": "accepted",
+        "value": null
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": true,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'BooleanValue{value=true}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `true` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": false,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'BooleanValue{value=false}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `false` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 0,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=0}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `0` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 1,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=1}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 20210111,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=20210111}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `20210111` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 1610368224,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=1610368224}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1610368224` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 1.5,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1.5}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1.5` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": 1e+3,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1E+3}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1000.0` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": [],
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ArrayValue{values=[]}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `[]` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": [
+        "2021-01-11"
+      ],
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ArrayValue{values=[StringValue{value='2021-01-11'}]}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `[2021-01-11]` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": {},
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ObjectValue{objectFields=[]}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `{}` as a valid date."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": {
+        "a": 1
+      },
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ObjectValue{objectFields=[ObjectField{name='a', value=IntValue{value=1}}]}' is not a valid 'AWSDate' @ 'inputDate'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `{a=1}` as a valid date."
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Windows CI checks out these scripts and runs them in bash.
+*.sh text eol=lf
+*.wasm binary

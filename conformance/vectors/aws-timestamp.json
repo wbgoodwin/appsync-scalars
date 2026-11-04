@@ -1,0 +1,1100 @@
+{
+  "format_version": 1,
+  "scalar": "AWSTimestamp",
+  "recorded_at": "2026-11-04",
+  "region": "us-east-1",
+  "cases": [
+    {
+      "group": "documented",
+      "value": -123123,
+      "input_variable": {
+        "result": "accepted",
+        "value": -123123
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": -123123
+      },
+      "output": {
+        "result": "accepted",
+        "value": -123123
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 0,
+      "input_variable": {
+        "result": "accepted",
+        "value": 0
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 0
+      },
+      "output": {
+        "result": "accepted",
+        "value": 0
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 1,
+      "input_variable": {
+        "result": "accepted",
+        "value": 1
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 1
+      },
+      "output": {
+        "result": "accepted",
+        "value": 1
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -1,
+      "input_variable": {
+        "result": "accepted",
+        "value": -1
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": -1
+      },
+      "output": {
+        "result": "accepted",
+        "value": -1
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 1610368224,
+      "input_variable": {
+        "result": "accepted",
+        "value": 1610368224
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 1610368224
+      },
+      "output": {
+        "result": "accepted",
+        "value": 1610368224
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 2147483647,
+      "input_variable": {
+        "result": "accepted",
+        "value": 2147483647
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 2147483647
+      },
+      "output": {
+        "result": "accepted",
+        "value": 2147483647
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 2147483648,
+      "input_variable": {
+        "result": "accepted",
+        "value": 2147483648
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 2147483648
+      },
+      "output": {
+        "result": "accepted",
+        "value": 2147483648
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -2147483648,
+      "input_variable": {
+        "result": "accepted",
+        "value": -2147483648
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": -2147483648
+      },
+      "output": {
+        "result": "accepted",
+        "value": -2147483648
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -2147483649,
+      "input_variable": {
+        "result": "accepted",
+        "value": -2147483649
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": -2147483649
+      },
+      "output": {
+        "result": "accepted",
+        "value": -2147483649
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 4294967296,
+      "input_variable": {
+        "result": "accepted",
+        "value": 4294967296
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 4294967296
+      },
+      "output": {
+        "result": "accepted",
+        "value": 4294967296
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 253402300799,
+      "input_variable": {
+        "result": "accepted",
+        "value": 253402300799
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 253402300799
+      },
+      "output": {
+        "result": "accepted",
+        "value": 253402300799
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -62135596800,
+      "input_variable": {
+        "result": "accepted",
+        "value": -62135596800
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": -62135596800
+      },
+      "output": {
+        "result": "accepted",
+        "value": -62135596800
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 9007199254740991,
+      "input_variable": {
+        "result": "accepted",
+        "value": 9007199254740991
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 9007199254740991
+      },
+      "output": {
+        "result": "accepted",
+        "value": 9007199254740991
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 9007199254740992,
+      "input_variable": {
+        "result": "accepted",
+        "value": 9007199254740992
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 9007199254740992
+      },
+      "output": {
+        "result": "accepted",
+        "value": 9007199254740992
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 9223372036854775807,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=9223372036854775807}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `9223372036854775807` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 9223372036854775808,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=9223372036854775808}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `9223372036854775808` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -9223372036854775808,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=-9223372036854775808}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-9223372036854775808` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -9223372036854775809,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=-9223372036854775809}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-9223372036854775809` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 18446744073709551616,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 0
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `18446744073709551616` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 18446744073709551617,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 1
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `18446744073709551617` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -18446744073709551616,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 0
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-18446744073709551616` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 31556889864403199,
+      "input_variable": {
+        "result": "accepted",
+        "value": 31556889864403199
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 31556889864403199
+      },
+      "output": {
+        "result": "accepted",
+        "value": 31556889864403199
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 31556889864403200,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=31556889864403200}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `31556889864403200` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -31557014167219200,
+      "input_variable": {
+        "result": "accepted",
+        "value": -31557014167219200
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": -31557014167219200
+      },
+      "output": {
+        "result": "accepted",
+        "value": -31557014167219200
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": -31557014167219201,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=-31557014167219201}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-31557014167219201` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "integer-range",
+      "value": 1000000000000000000000000,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'IntValue{value=1000000000000000000000000}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1000000000000000000000000` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 0.0,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=0.0}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `0.0` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 1.0,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1.0}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1.0` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": -1.0,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=-1.0}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-1.0` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": -0,
+      "input_variable": {
+        "result": "accepted",
+        "value": 0
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": 0
+      },
+      "output": {
+        "result": "accepted",
+        "value": 0
+      }
+    },
+    {
+      "group": "number-form",
+      "value": -0.0,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=0.0}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-0.0` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 1.5,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1.5}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1.5` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 1e+3,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1E+3}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1000.0` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 1.0e+3,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1.0E+3}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1000.0` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 1e-3,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=0.001}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `0.001` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 1610368224.0,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1610368224.0}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1.610368224E9` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 1610368224.5,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1610368224.5}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1.6103682245E9` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "number-form",
+      "value": 1e+400,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'FloatValue{value=1E+400}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `Infinity` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "1610368224",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1610368224'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1610368224` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "-1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='-1'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `-1` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "1.5",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1.5'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1.5` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "1e3",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1e3'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1e3` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": " 1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=' 1'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize ` 1` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "1 ",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='1 '}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `1 ` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "0x10",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='0x10'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `0x10` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "+1",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='+1'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `+1` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "numeric-string",
+      "value": "01",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='01'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `01` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "date-string",
+      "value": "2021-01-11T12:30:24Z",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11T12:30:24Z'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11T12:30:24Z` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "date-string",
+      "value": "2021-01-11",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `2021-01-11` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=''}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": " ",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value=' '}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize ` ` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "null",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='null'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `null` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "undefined",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='undefined'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `undefined` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "NaN",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='NaN'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `NaN` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "Infinity",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='Infinity'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `Infinity` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "now",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='now'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `now` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "today",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='today'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `today` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "abc",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='abc'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `abc` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "0",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='0'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `0` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "junk",
+      "value": "😀",
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'StringValue{value='😀'}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `😀` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": null,
+      "input_variable": {
+        "result": "accepted",
+        "value": null
+      },
+      "input_literal": {
+        "result": "accepted",
+        "value": null
+      },
+      "output": {
+        "result": "accepted",
+        "value": null
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": true,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'BooleanValue{value=true}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `true` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": false,
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'BooleanValue{value=false}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `false` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": [],
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ArrayValue{values=[]}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `[]` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": [
+        1
+      ],
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ArrayValue{values=[IntValue{value=1}]}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `[1]` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": {},
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ObjectValue{objectFields=[]}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `{}` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    },
+    {
+      "group": "wrong-type",
+      "value": {
+        "a": 1
+      },
+      "input_variable": {
+        "result": "rejected",
+        "error": "Variable 'value' has an invalid value."
+      },
+      "input_literal": {
+        "result": "rejected",
+        "error": "Validation error of type WrongType: argument 'value' with value 'ObjectValue{objectFields=[ObjectField{name='a', value=IntValue{value=1}}]}' is not a valid 'AWSTimestamp' @ 'inputTimestamp'"
+      },
+      "output": {
+        "result": "rejected",
+        "error": "Can't serialize value (/r) : Unable to serialize `{a=1}` as a valid timestamp. Ensure that the value provided is an Integer that lies within the limits specified in this scalar's description."
+      }
+    }
+  ]
+}

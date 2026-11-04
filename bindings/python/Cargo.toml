@@ -1,0 +1,14 @@
+[package]
+name = "appsync-scalars-python"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+name = "_native"
+crate-type = ["cdylib"]
+
+[dependencies]
+appsync-scalars = { path = "../../crates/appsync-scalars" }
+# generate-import-lib lets Windows builds link without a matching Python installation.
+pyo3 = { version = "0.30", features = ["abi3-py310", "generate-import-lib"] }

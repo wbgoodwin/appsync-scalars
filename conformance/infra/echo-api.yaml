@@ -1,0 +1,192 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+  Echo API used to record how AppSync treats AWSDate, AWSTime, AWSDateTime and
+  AWSTimestamp values. It stores nothing and can be deleted after recording.
+
+# Each scalar gets two fields so AppSync's two checks can be observed separately:
+#   input*  takes the scalar and returns String, so only input coercion applies.
+#   output* takes JSON text and returns the scalar, so only output serialization applies.
+#
+# Output resolvers are VTL so that text reaches AppSync unchanged. JavaScript rounds integers
+# beyond 2^53, and AppSync rejected 1610368224 when a JavaScript resolver here returned it as a
+# bare number. Other JavaScript resolver shapes, such as an object with a timestamp field, are
+# untested.
+
+Resources:
+  Api:
+    Type: AWS::AppSync::GraphQLApi
+    Properties:
+      Name: !Ref AWS::StackName
+      AuthenticationType: API_KEY
+
+  # With no Expires set, AppSync expires this key after 7 days.
+  ApiKey:
+    Type: AWS::AppSync::ApiKey
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      Description: Used by the conformance recorder
+
+  Schema:
+    Type: AWS::AppSync::GraphQLSchema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      Definition: |
+        type Query {
+          inputDate(value: AWSDate): String
+          inputTime(value: AWSTime): String
+          inputDateTime(value: AWSDateTime): String
+          inputTimestamp(value: AWSTimestamp): String
+          outputDate(json: String!): AWSDate
+          outputTime(json: String!): AWSTime
+          outputDateTime(json: String!): AWSDateTime
+          outputTimestamp(json: String!): AWSTimestamp
+        }
+
+        schema {
+          query: Query
+        }
+
+  Echo:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      Name: Echo
+      Type: NONE
+
+  InputDateResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn: Schema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      TypeName: Query
+      FieldName: inputDate
+      Kind: UNIT
+      DataSourceName: !GetAtt Echo.Name
+      Runtime:
+        Name: APPSYNC_JS
+        RuntimeVersion: 1.0.0
+      Code: |
+        export function request(ctx) {
+          const value = ctx.args.value;
+          return { payload: JSON.stringify(value === undefined ? null : value) };
+        }
+        export function response(ctx) {
+          return ctx.result;
+        }
+
+  InputTimeResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn: Schema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      TypeName: Query
+      FieldName: inputTime
+      Kind: UNIT
+      DataSourceName: !GetAtt Echo.Name
+      Runtime:
+        Name: APPSYNC_JS
+        RuntimeVersion: 1.0.0
+      Code: |
+        export function request(ctx) {
+          const value = ctx.args.value;
+          return { payload: JSON.stringify(value === undefined ? null : value) };
+        }
+        export function response(ctx) {
+          return ctx.result;
+        }
+
+  InputDateTimeResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn: Schema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      TypeName: Query
+      FieldName: inputDateTime
+      Kind: UNIT
+      DataSourceName: !GetAtt Echo.Name
+      Runtime:
+        Name: APPSYNC_JS
+        RuntimeVersion: 1.0.0
+      Code: |
+        export function request(ctx) {
+          const value = ctx.args.value;
+          return { payload: JSON.stringify(value === undefined ? null : value) };
+        }
+        export function response(ctx) {
+          return ctx.result;
+        }
+
+  InputTimestampResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn: Schema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      TypeName: Query
+      FieldName: inputTimestamp
+      Kind: UNIT
+      DataSourceName: !GetAtt Echo.Name
+      Runtime:
+        Name: APPSYNC_JS
+        RuntimeVersion: 1.0.0
+      Code: |
+        export function request(ctx) {
+          const value = ctx.args.value;
+          return { payload: JSON.stringify(value === undefined ? null : value) };
+        }
+        export function response(ctx) {
+          return ctx.result;
+        }
+
+  OutputDateResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn: Schema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      TypeName: Query
+      FieldName: outputDate
+      Kind: UNIT
+      DataSourceName: !GetAtt Echo.Name
+      RequestMappingTemplate: '{"version": "2018-05-29", "payload": {}}'
+      ResponseMappingTemplate: $ctx.args.json
+
+  OutputTimeResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn: Schema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      TypeName: Query
+      FieldName: outputTime
+      Kind: UNIT
+      DataSourceName: !GetAtt Echo.Name
+      RequestMappingTemplate: '{"version": "2018-05-29", "payload": {}}'
+      ResponseMappingTemplate: $ctx.args.json
+
+  OutputDateTimeResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn: Schema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      TypeName: Query
+      FieldName: outputDateTime
+      Kind: UNIT
+      DataSourceName: !GetAtt Echo.Name
+      RequestMappingTemplate: '{"version": "2018-05-29", "payload": {}}'
+      ResponseMappingTemplate: $ctx.args.json
+
+  OutputTimestampResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn: Schema
+    Properties:
+      ApiId: !GetAtt Api.ApiId
+      TypeName: Query
+      FieldName: outputTimestamp
+      Kind: UNIT
+      DataSourceName: !GetAtt Echo.Name
+      RequestMappingTemplate: '{"version": "2018-05-29", "payload": {}}'
+      ResponseMappingTemplate: $ctx.args.json
+
+Outputs:
+  GraphQLUrl:
+    Value: !GetAtt Api.GraphQLUrl
+  ApiKey:
+    Value: !GetAtt ApiKey.ApiKey

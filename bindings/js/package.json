@@ -1,0 +1,29 @@
+{
+  "name": "appsync-scalars",
+  "version": "0.1.0",
+  "description": "Validates AWS AppSync date and time scalar values.",
+  "keywords": ["appsync", "aws", "graphql", "validation", "iso8601"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wbgoodwin/appsync-scalars.git",
+    "directory": "bindings/js"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "types": "./index.d.ts",
+  "files": ["index.js", "index.d.ts", "wasm.generated.js"],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "prepack": "cp ../../README.md . && ../../scripts/build-wasm.sh"
+  }
+}

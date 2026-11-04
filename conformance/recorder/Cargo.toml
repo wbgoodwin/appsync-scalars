@@ -1,0 +1,13 @@
+[package]
+name = "appsync-conformance"
+version = "0.1.0"
+edition = "2024"
+publish = false
+description = "Records how a live AWS AppSync API treats date and time scalar values."
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+# arbitrary_precision keeps integers and decimals like 9223372036854775808 and 1.0 exact.
+# Exponents keep their value but gain a sign, so 1e3 is sent as 1e+3.
+serde_json = { version = "1", features = ["arbitrary_precision"] }
+ureq = "3"
