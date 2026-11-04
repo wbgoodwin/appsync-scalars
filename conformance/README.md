@@ -75,3 +75,5 @@ AWS_PROFILE=<profile> conformance/live.sh teardown
 ```
 
 Run the offline tests with `cargo test`. They need no AWS access.
+
+[`acceptance/`](acceptance/) holds a check for each language that compares an installed package against `smoke.json` and every recorded result. [`scripts/acceptance.sh`](../scripts/acceptance.sh) runs them.

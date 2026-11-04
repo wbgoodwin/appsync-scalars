@@ -12,9 +12,15 @@ echo "== WebAssembly build"
 
 echo "== Python"
 (cd "$root/bindings/python" && uv run --quiet --group dev pytest -q)
+(cd "$root/bindings/python" && uv run --quiet --group dev python ../../conformance/acceptance/check.py ../../conformance)
 
 echo "== JavaScript"
 (cd "$root/bindings/js" && node --test)
 
 echo "== Go"
 (cd "$root/bindings/go" && CGO_ENABLED=0 go test ./... && go test -race ./...)
+
+echo "== Built packages"
+"$root/scripts/acceptance.sh" npm
+"$root/scripts/acceptance.sh" rust
+"$root/scripts/acceptance.sh" go
