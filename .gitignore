@@ -9,9 +9,6 @@ node_modules/
 /dist/
 /.wheel-venv/
 
-# Copied from the repository root when the npm package is built.
-/bindings/js/README.md
-
 # Rebuilt by scripts/build-wasm.sh. The Go copy of the module stays committed because
 # `go get` only sees files in the repository.
 /bindings/js/wasm.generated.js

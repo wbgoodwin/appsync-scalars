@@ -244,7 +244,6 @@ jobs:
           if [ -n "$(npm view "appsync-scalars@$version" version 2>/dev/null || true)" ]; then
             echo "appsync-scalars $version is already on npm"
           else
-            cp ../../README.md .
             npm publish --ignore-scripts --access public
           fi
 

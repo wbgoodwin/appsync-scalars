@@ -6,59 +6,12 @@ The rules come from results recorded from a live AppSync API, which differ from 
 
 ## Usage
 
-### Rust
-
-```rust
-use appsync_scalars::{is_aws_date, validate_aws_datetime};
-
-assert!(is_aws_date("1970-01-01+05:30"));
-
-// Err: invalid AWSDateTime: time zone offset is required
-validate_aws_datetime("2021-01-11T12:30:24").unwrap_err();
-```
-
-### Python
-
-```python
-from appsync_scalars import is_aws_date, validate_aws_datetime
-
-is_aws_date("1970-01-01+05:30")  # True
-validate_aws_datetime("2021-01-11T12:30:24")  # raises ValueError
-```
-
-The core package has no dependencies. Pydantic field types are an optional extra, installed with `pip install "appsync-scalars[pydantic]"`:
-
-```python
-from pydantic import BaseModel
-from appsync_scalars.pydantic import AWSDate, AWSDateTime, AWSTimestamp
-
-class Event(BaseModel):
-    day: AWSDate
-    starts_at: AWSDateTime
-    created: AWSTimestamp
-```
-
-Fields keep the exact `str` or `int` they were given, because Python's `datetime` cannot hold negative years and keeps only microseconds. They are also strict, so `"123"` is not converted to an integer for `AWSTimestamp`.
-
-### JavaScript and TypeScript
-
-```js
-import { isAWSDate, validateAWSDateTime } from "appsync-scalars";
-
-isAWSDate("1970-01-01+05:30"); // true
-validateAWSDateTime("2021-01-11T12:30:24"); // throws AppSyncScalarError
-```
-
-### Go
-
-```go
-import appsyncscalars "github.com/wbgoodwin/appsync-scalars/bindings/go"
-
-appsyncscalars.IsAWSDate("1970-01-01+05:30") // true
-err := appsyncscalars.ValidateAWSDateTime("2021-01-11T12:30:24") // *appsyncscalars.Error
-```
-
-`AWSTimestamp` functions take the integer's text in Go and Rust, and an integer in Python and JavaScript.
+| Language | Install | Guide |
+|---|---|---|
+| Python | `pip install appsync-scalars` | [Python README](bindings/python/README.md), including Pydantic field types |
+| JavaScript and TypeScript | `npm install appsync-scalars` | [JavaScript README](bindings/js/README.md) |
+| Rust | `cargo add appsync-scalars` | [Rust README](crates/appsync-scalars/README.md) |
+| Go | `go get github.com/wbgoodwin/appsync-scalars/bindings/go` | [Go README](bindings/go/README.md) |
 
 ## What AppSync accepts
 
@@ -82,15 +35,15 @@ AppSync gave the same verdict for a GraphQL variable and for resolver output on 
 
 | Path | Purpose |
 |---|---|
-| [`crates/appsync-scalars`](https://github.com/wbgoodwin/appsync-scalars/blob/main/crates/appsync-scalars/src/lib.rs) | The validator: Rust with no dependencies |
-| [`crates/appsync-scalars-wasm`](https://github.com/wbgoodwin/appsync-scalars/blob/main/crates/appsync-scalars-wasm/src/lib.rs) | The WebAssembly module, about 4 KB, shared by JavaScript and Go |
-| [`bindings/python`](https://github.com/wbgoodwin/appsync-scalars/blob/main/bindings/python/pyproject.toml) | Native extension built with PyO3 and maturin, plus the Pydantic types |
-| [`bindings/js`](https://github.com/wbgoodwin/appsync-scalars/blob/main/bindings/js/index.js) | npm package that embeds the module, so it has no install step or platform-specific builds |
-| [`bindings/go`](https://github.com/wbgoodwin/appsync-scalars/blob/main/bindings/go/appsyncscalars.go) | Go module that runs the embedded module through wazero, with no cgo |
-| [`conformance/smoke.json`](https://github.com/wbgoodwin/appsync-scalars/blob/main/conformance/smoke.json) | Test cases every language runs |
-| [`conformance/`](https://github.com/wbgoodwin/appsync-scalars/blob/main/conformance/README.md) | The live AppSync test suite |
+| [`crates/appsync-scalars`](crates/appsync-scalars/src/lib.rs) | The validator: Rust with no dependencies |
+| [`crates/appsync-scalars-wasm`](crates/appsync-scalars-wasm/src/lib.rs) | The WebAssembly module, about 4 KB, shared by JavaScript and Go |
+| [`bindings/python`](bindings/python/pyproject.toml) | Native extension built with PyO3 and maturin, plus the Pydantic types |
+| [`bindings/js`](bindings/js/index.js) | npm package that embeds the module, so it has no install step or platform-specific builds |
+| [`bindings/go`](bindings/go/appsyncscalars.go) | Go module that runs the embedded module through wazero, with no cgo |
+| [`conformance/smoke.json`](conformance/smoke.json) | Test cases every language runs |
+| [`conformance/`](conformance/README.md) | The live AppSync test suite |
 
-Other languages with a WebAssembly runtime can load the same module. Its interface is described in [`crates/appsync-scalars-wasm/src/lib.rs`](https://github.com/wbgoodwin/appsync-scalars/blob/main/crates/appsync-scalars-wasm/src/lib.rs).
+Other languages with a WebAssembly runtime can load the same module. Its interface is described in [`crates/appsync-scalars-wasm/src/lib.rs`](crates/appsync-scalars-wasm/src/lib.rs).
 
 ## Development
 

@@ -4,6 +4,7 @@
   "description": "Validates AWS AppSync date and time scalar values.",
   "keywords": ["appsync", "aws", "graphql", "validation", "iso8601"],
   "license": "MIT",
+  "homepage": "https://github.com/wbgoodwin/appsync-scalars/blob/main/bindings/js/README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wbgoodwin/appsync-scalars.git",
@@ -24,6 +25,6 @@
   },
   "scripts": {
     "test": "node --test",
-    "prepack": "cp ../../README.md . && ../../scripts/build-wasm.sh"
+    "prepack": "../../scripts/build-wasm.sh"
   }
 }
