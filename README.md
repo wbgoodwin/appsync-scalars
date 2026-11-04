@@ -65,7 +65,7 @@ scripts/build-wasm.sh
 
 GitHub Actions runs the tests, and builds and tests a wheel on Linux, macOS and Windows, for every pull request and push to `main`.
 
-To release, set the new version in `crates/appsync-scalars/Cargo.toml`, `bindings/python/pyproject.toml` and `bindings/js/package.json`, merge to `main`, then push a tag:
+To release, set the new version in `crates/appsync-scalars/Cargo.toml`, `bindings/python/pyproject.toml` and `bindings/js/package.json`, and run `cargo check` to update `Cargo.lock`. Merge that to `main`, then push a tag. The tag must match those versions, or the release stops before publishing anything.
 
 ```bash
 git tag v1.2.3 && git push origin v1.2.3
