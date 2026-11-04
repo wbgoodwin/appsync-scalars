@@ -6,7 +6,7 @@ build-backend = "maturin"
 name = "appsync-scalars"
 version = "0.1.0"
 description = "Validates AWS AppSync date and time scalar values."
-readme = "../../README.md"
+readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
@@ -14,6 +14,7 @@ keywords = ["appsync", "aws", "graphql", "validation", "pydantic"]
 
 [project.urls]
 Repository = "https://github.com/wbgoodwin/appsync-scalars"
+Documentation = "https://github.com/wbgoodwin/appsync-scalars/blob/main/bindings/python/README.md"
 
 [project.optional-dependencies]
 pydantic = ["pydantic>=2"]

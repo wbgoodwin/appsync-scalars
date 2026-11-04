@@ -5,7 +5,8 @@ edition = "2024"
 description = "Validates AWS AppSync date and time scalar values."
 license = "MIT"
 repository = "https://github.com/wbgoodwin/appsync-scalars"
-readme = "../../README.md"
+homepage = "https://github.com/wbgoodwin/appsync-scalars/blob/main/crates/appsync-scalars/README.md"
+readme = "README.md"
 keywords = ["appsync", "aws", "graphql", "validation", "iso8601"]
 categories = ["date-and-time", "no-std"]
 # These tests read the shared cases in conformance/, which aren't part of the crate.
