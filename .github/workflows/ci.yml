@@ -83,7 +83,7 @@ jobs:
         run: node --test
       - name: Check the type declarations work the way they are used
         working-directory: bindings/js
-        run: npx --yes typescript@5.9.3 tsc --noEmit --strict --module nodenext --target es2022 test/types.ts
+        run: npx --yes -p typescript@5.9.3 tsc --noEmit --strict --module nodenext --target es2022 typecheck.ts
 
   go:
     runs-on: ubuntu-24.04

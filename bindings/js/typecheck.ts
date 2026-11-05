@@ -1,5 +1,6 @@
-// Compiled with tsc --noEmit in CI to check index.d.ts works the way people use it.
-import { isAWSDate, isAWSTimestamp, validateAWSDate, validateAWSTimestamp } from "../index.js";
+// Compiled with tsc --noEmit in CI to check index.d.ts works the way people use it. It lives
+// outside test/ because node --test would otherwise run it as a test on newer Node versions.
+import { isAWSDate, isAWSTimestamp, validateAWSDate, validateAWSTimestamp } from "./index.js";
 
 // A string that fails the check is still a string.
 export function length(day: string): number {
