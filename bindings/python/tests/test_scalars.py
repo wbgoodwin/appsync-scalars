@@ -1,3 +1,4 @@
+import enum
 import json
 from pathlib import Path
 
@@ -46,6 +47,34 @@ def test_timestamp_range_handles_big_python_integers():
     assert scalars.is_aws_timestamp(2**63 - 1) is False
     assert scalars.is_aws_timestamp(2**63) is False
     assert scalars.is_aws_timestamp(10**100) is False
+
+
+def test_timestamp_far_too_large_to_print_is_out_of_range():
+    # Python refuses to print an int this long, so its digits can't be checked as text.
+    with pytest.raises(ValueError, match="invalid AWSTimestamp: timestamp is out of range"):
+        scalars.validate_aws_timestamp(10**5000)
+
+
+class LoudInt(int):
+    def __str__(self):
+        return "5"
+
+    def __repr__(self):
+        return "5"
+
+    def __index__(self):
+        return 5
+
+
+class Five(enum.IntEnum):
+    FIVE = 5
+
+
+def test_int_subclasses_are_judged_by_their_value():
+    # A subclass's own text doesn't change the verdict, on any Python version.
+    assert scalars.is_aws_timestamp(LoudInt(10**30)) is False
+    assert scalars.is_aws_timestamp(LoudInt(7)) is True
+    assert scalars.is_aws_timestamp(Five.FIVE) is True
 
 
 def test_lone_surrogates_are_invalid_rather_than_an_encoding_error():

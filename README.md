@@ -63,6 +63,29 @@ For the full API, see the guide for your language:
 - [Rust](crates/appsync-scalars/README.md)
 - [Go](bindings/go/README.md)
 
+## Why did AppSync reject my value?
+
+AppSync reports a bad scalar in one of three ways, depending on how the value reached it, and none of them says what was wrong with it:
+
+| Where the value was | AppSync's error |
+|---|---|
+| A GraphQL variable | `Variable 'value' has an invalid value.` |
+| Written inline in the query | `Validation error of type WrongType: argument 'value' with value 'StringValue{value='2021-01-11T12:30'}' is not a valid 'AWSDateTime'` |
+| Returned by a resolver | `Can't serialize value (/field) : Unable to serialize `2021-01-11T12:30` as a valid DateTime Object.` |
+
+The `validate_` functions give the reason instead. These are the ones that come up most, taken from the recorded results:
+
+| Reason | Example | What AppSync wants |
+|---|---|---|
+| `time zone offset is required` | `2021-01-11T12:30:24` | `AWSDateTime` always needs `Z` or an offset, unlike `AWSDate` and `AWSTime`. Python's `datetime.isoformat()` leaves it out unless the datetime has a `tzinfo`; JavaScript's `Date.toISOString()` and Go's `time.RFC3339` include it. |
+| `hour is out of range` | `24:00` | `00` to `23`; midnight at the end of a day is the next day's `00:00`. |
+| `day is out of range for the month` | `2021-02-29` | A real calendar date. |
+| `format not recognized` | `+2021-01-11`, `2021-1-11`, `2021/01/11` | Four-digit years take no `+`, and every field is zero-padded with `-` and `:` separators. |
+| `time zone offset must be Z, +hh:mm or +hh:mm:ss` | `2021-01-11+05` | `AWSDate` and `AWSTime` want the minutes; only `AWSDateTime` takes an hours-only offset. |
+| `expected an integer` | `1610368224.5`, `"1610368224"` | An `AWSTimestamp` is a whole number in JSON, not a float or a string. AppSync also rejects `1000.0` from a resolver, which JavaScript can't tell from `1000`, so this library can't catch that one. |
+
+A timestamp in milliseconds, such as `1610368224000`, is valid to AppSync and to this library: it is simply a date about 50,000 years from now. AppSync's limits allow years up to a billion either way.
+
 ## What AppSync accepts
 
 | Scalar | Valid examples |
@@ -99,7 +122,7 @@ AppSync gave the same verdict for a GraphQL variable and for resolver output on 
 | [`bindings/go`](bindings/go/README.md) | Go module that runs the embedded module through wazero, with no cgo |
 | [`conformance/`](conformance/README.md) | The live AppSync test suite, and the results it recorded in `vectors/` |
 | [`conformance/smoke.json`](conformance/smoke.json) | Test cases every language's unit tests run |
-| [`conformance/acceptance/`](conformance/acceptance/) | Checks an installed package against those cases and every recorded result |
+| [`conformance/acceptance/`](conformance/acceptance/) | Checks an installed package against those cases and every recorded result its API can express |
 | [`scripts/`](scripts/) | Building, testing and releasing |
 
 Other languages with a WebAssembly runtime can load the same module. Its interface is described in [`crates/appsync-scalars-wasm/src/lib.rs`](crates/appsync-scalars-wasm/src/lib.rs).
@@ -130,7 +153,7 @@ scripts/build-wasm.sh
 
 GitHub Actions runs the tests, and builds and tests each package, for every pull request and push to `main`.
 
-Merging a change to a published package releases it. Once the checks pass on `main`, the workflow picks the next patch version and tags it. It then repeats every check, publishes to crates.io, PyPI and npm, adds the `bindings/go/v1.2.3` tag Go needs, installs each package from its registry to check it against every recorded AppSync result, and creates a GitHub Release with notes from the merged pull requests. Merges that only touch CI, tests or this README don't release anything. Pushing a `v*` tag by hand doesn't start a release, and since tags can't be removed, a stray one would stay in the version history.
+Merging a change to a published package releases it. Once the checks pass on `main`, the workflow picks the next patch version and tags it. It then repeats every check, publishes to crates.io, PyPI and npm, adds the `bindings/go/v1.2.3` tag Go needs, installs each package from its registry to check it against the recorded AppSync results, and creates a GitHub Release with notes from the merged pull requests. Merges that only touch CI, tests or this README don't release anything. The release checks run before the tag is pushed, because tags can't be removed, so a stray one would stay in the version history. Pushing a `v*` tag by hand doesn't start a release.
 
 For a minor or major version, set it in your pull request, and the merge releases that version instead:
 

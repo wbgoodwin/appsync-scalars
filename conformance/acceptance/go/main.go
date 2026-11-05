@@ -80,6 +80,9 @@ func main() {
 			} `json:"cases"`
 		}
 		load(filepath.Join(conformance, "vectors", stem+".json"), &vectors)
+		if len(vectors.Cases) == 0 {
+			panic(stem + ".json has no recorded cases")
+		}
 		for _, c := range vectors.Cases {
 			text, ok := asText(vectors.Scalar, c.Value)
 			if !ok {
@@ -91,6 +94,9 @@ func main() {
 		}
 	}
 
+	if len(expected) == 0 {
+		panic("no cases to check")
+	}
 	matched := 0
 	for _, c := range expected {
 		if checks[c.scalar](c.text) == c.valid {

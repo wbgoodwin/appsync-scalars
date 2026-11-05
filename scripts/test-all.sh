@@ -16,6 +16,7 @@ echo "== Python"
 
 echo "== JavaScript"
 (cd "$root/bindings/js" && node --test)
+(cd "$root/bindings/js" && npx --yes -p typescript@5.9.3 tsc --noEmit --strict --module nodenext --target es2022 typecheck.ts)
 
 echo "== Go"
 (cd "$root/bindings/go" && CGO_ENABLED=0 go test ./... && go test -race ./...)

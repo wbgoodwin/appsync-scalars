@@ -31,6 +31,9 @@ function toArgument(scalar, value) {
 const expected = JSON.parse(readFileSync(join(conformance, "smoke.json"), "utf8"));
 for (const stem of ["aws-date", "aws-time", "aws-datetime", "aws-timestamp"]) {
   const { scalar, cases } = loadVectors(stem);
+  if (cases.length === 0) {
+    throw new Error(`${stem}.json has no recorded cases`);
+  }
   for (const { value, input_variable, output } of cases) {
     const argument = toArgument(scalar, value);
     if (argument !== undefined) {
@@ -41,6 +44,9 @@ for (const stem of ["aws-date", "aws-time", "aws-datetime", "aws-timestamp"]) {
   }
 }
 
+if (expected.length === 0) {
+  throw new Error("no cases to check");
+}
 const mismatches = expected.filter(({ scalar, value, valid }) => checks[scalar](value) !== valid);
 for (const { scalar, value, valid } of mismatches) {
   console.log(`${scalar} ${String(value)}: expected valid = ${valid}`);

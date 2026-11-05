@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Installs a package the way a user would, in an empty project, then checks it against the shared
-# cases and every recorded AppSync result.
+# cases and the recorded AppSync results its API can express.
 #
 # Usage: scripts/acceptance.sh <python|npm|rust|go> [tag]
 #

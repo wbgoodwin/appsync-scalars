@@ -12,3 +12,7 @@ node_modules/
 # Rebuilt by scripts/build-wasm.sh. The Go copy of the module stays committed because
 # `go get` only sees files in the repository.
 /bindings/js/wasm.generated.js
+
+# The acceptance crate is built in a copy, so a build here is only a mistake.
+/conformance/acceptance/rust/target/
+/conformance/acceptance/rust/Cargo.lock
