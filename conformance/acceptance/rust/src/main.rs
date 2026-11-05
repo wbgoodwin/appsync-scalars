@@ -44,7 +44,9 @@ fn main() -> ExitCode {
     for stem in ["aws-date", "aws-time", "aws-datetime", "aws-timestamp"] {
         let vectors = load(&conformance.join("vectors").join(format!("{stem}.json")));
         let scalar = scalar(vectors["scalar"].as_str().unwrap());
-        for case in vectors["cases"].as_array().unwrap() {
+        let cases = vectors["cases"].as_array().unwrap();
+        assert!(!cases.is_empty(), "{stem}.json has no recorded cases");
+        for case in cases {
             let Some(text) = as_text(scalar, &case["value"]) else { continue };
             for path in ["input_variable", "output"] {
                 expected.push((scalar, text.clone(), case[path]["result"] == "accepted"));
@@ -52,6 +54,7 @@ fn main() -> ExitCode {
         }
     }
 
+    assert!(!expected.is_empty(), "no cases to check");
     let mut matched = 0;
     for (scalar, text, valid) in &expected {
         if is_valid(*scalar, text) == *valid {

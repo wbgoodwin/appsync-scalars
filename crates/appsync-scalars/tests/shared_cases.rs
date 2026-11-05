@@ -1,4 +1,4 @@
-//! Runs the test data shared by every language, including live results once they are recorded.
+//! Runs the test data shared by every language, including the recorded live results.
 
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -35,7 +35,9 @@ fn as_text(scalar: Scalar, value: &Value) -> Option<String> {
 #[test]
 fn smoke_cases() {
     let cases = load(&conformance_dir().join("smoke.json"));
-    for case in cases.as_array().unwrap() {
+    let cases = cases.as_array().unwrap();
+    assert!(!cases.is_empty(), "smoke.json has no cases");
+    for case in cases {
         let scalar = scalar(case["scalar"].as_str().unwrap());
         let text = as_text(scalar, &case["value"]).expect("smoke value has a text form");
         let expected = case["valid"].as_bool().unwrap();
@@ -49,22 +51,16 @@ fn smoke_cases() {
 fn live_vectors() {
     let directory = conformance_dir().join("vectors");
     let stems = ["aws-date", "aws-time", "aws-datetime", "aws-timestamp"];
-    let files: Vec<PathBuf> = stems
-        .iter()
-        .map(|stem| directory.join(format!("{stem}.json")))
-        .filter(|path| path.exists())
-        .collect();
-    if files.is_empty() {
-        eprintln!("no live vectors recorded yet, skipping");
-        return;
-    }
+    let files: Vec<PathBuf> = stems.iter().map(|stem| directory.join(format!("{stem}.json"))).collect();
 
     let mut mismatches = Vec::new();
     let mut total = 0;
     for file in files {
         let vectors = load(&file);
         let scalar = scalar(vectors["scalar"].as_str().unwrap());
-        for case in vectors["cases"].as_array().unwrap() {
+        let cases = vectors["cases"].as_array().unwrap();
+        assert!(!cases.is_empty(), "{} has no recorded cases", file.display());
+        for case in cases {
             let Some(text) = as_text(scalar, &case["value"]) else { continue };
             total += 1;
             for path in ["input_variable", "output"] {

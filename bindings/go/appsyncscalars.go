@@ -125,19 +125,19 @@ func (v *validator) check(scalar uint64, value string) error {
 	if err := v.validate.CallWithStack(v.ctx, v.stack[:]); err != nil {
 		panic("appsyncscalars: calling embedded module: " + err.Error())
 	}
-	code := v.stack[0]
+	code := api.DecodeU32(v.stack[0])
 	if code == 0 {
 		return nil
 	}
 	return &Error{Scalar: scalarNames[scalar], Reason: v.reason(code)}
 }
 
-func (v *validator) reason(code uint64) string {
-	ptr, err := v.reasonPtr.Call(v.ctx, code)
+func (v *validator) reason(code uint32) string {
+	ptr, err := v.reasonPtr.Call(v.ctx, uint64(code))
 	if err != nil {
 		panic("appsyncscalars: calling embedded module: " + err.Error())
 	}
-	length, err := v.reasonLen.Call(v.ctx, code)
+	length, err := v.reasonLen.Call(v.ctx, uint64(code))
 	if err != nil {
 		panic("appsyncscalars: calling embedded module: " + err.Error())
 	}

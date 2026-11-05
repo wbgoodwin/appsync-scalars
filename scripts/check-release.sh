@@ -10,14 +10,27 @@ tag="$1"
 version="${tag#v}"
 status=0
 
+if ! printf '%s' "$version" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?$'; then
+  echo "$tag isn't a release tag: it needs the form v1.2.3 or v1.2.3-rc.1" >&2
+  exit 1
+fi
+
 # A tag publishes whatever commit it points at, so that has to be code that reached main. An
-# automatic release adds one commit on top, which may only set versions.
+# automatic release adds one commit on top, which may only set versions. The branch goes by its
+# full name, because a tag called origin/main would otherwise take its place.
 git fetch --quiet origin main
-if ! git merge-base --is-ancestor HEAD origin/main; then
-  other_changes="$(git diff --name-only HEAD^ HEAD -- . \
-    ':(exclude)crates/appsync-scalars/Cargo.toml' ':(exclude)bindings/python/pyproject.toml' \
-    ':(exclude)bindings/js/package.json' ':(exclude)Cargo.lock' ':(exclude)bindings/python/uv.lock')"
-  if [ -n "$other_changes" ] || ! git merge-base --is-ancestor HEAD^ origin/main; then
+main=refs/remotes/origin/main
+if ! git merge-base --is-ancestor HEAD "$main"; then
+  version_files=(crates/appsync-scalars/Cargo.toml bindings/python/pyproject.toml
+    bindings/js/package.json Cargo.lock bindings/python/uv.lock)
+  other_files="$(git diff --name-only HEAD^ HEAD -- . "${version_files[@]/#/:(exclude)}")"
+  # Every changed line in those files has to be a version line, so the commit can't slip in a
+  # package script or a dependency under the name of a version change. uv.lock also records the
+  # lockfile format's revision, which changes with the uv version that wrote it.
+  other_lines="$(git diff -U0 HEAD^ HEAD -- "${version_files[@]}" \
+    | grep -E '^[-+]' | grep -Ev '^(\+\+\+|---) ' \
+    | grep -Ev '^[-+] *((version = |"version": )"[^"]*",?|revision = [0-9]+)$' || true)"
+  if [ -n "$other_files" ] || [ -n "$other_lines" ] || ! git merge-base --is-ancestor HEAD^ "$main"; then
     echo "$(git rev-parse --short HEAD) isn't on main, or is more than a version change on top of it" >&2
     status=1
   fi

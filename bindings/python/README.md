@@ -35,7 +35,7 @@ Each scalar has two functions. The `is_` function returns a `bool`, and the `val
 | `AWSDateTime` | `str` | `is_aws_datetime` | `validate_aws_datetime` |
 | `AWSTimestamp` | `int` | `is_aws_timestamp` | `validate_aws_timestamp` |
 
-Passing a non-string to a text scalar's functions raises `TypeError`. The `AWSTimestamp` functions treat anything but an `int` as invalid, including `True` and `"123"`.
+Passing a non-string to a text scalar's functions raises `TypeError`. The `AWSTimestamp` functions treat anything but an `int` as invalid, including `True` and `"123"`. An `int` subclass, such as an `IntEnum`, is judged by its integer value.
 
 ## Pydantic
 
@@ -65,7 +65,7 @@ except ValidationError as error:
 `AWSDate`, `AWSTime`, `AWSDateTime` and `AWSTimestamp` behave like this:
 
 - **Values stay as given.** A field holds the exact `str` or `int` you passed, not a `datetime`, because `datetime` can't hold negative years and keeps only microseconds.
-- **Nothing is converted.** Fields are strict, so `"123"` isn't accepted as an `AWSTimestamp`, and a `datetime` isn't accepted as an `AWSDateTime`.
+- **Nothing is converted.** Fields are strict, so `"123"` isn't accepted as an `AWSTimestamp`, and a `datetime` isn't accepted as an `AWSDateTime`. The one exception is Pydantic's `validate_strings`, which is meant for query strings where every value is text, so it still turns `"1_000"` into `1000` before the check.
 - **Invalid values have stable error types.** They are `aws_date`, `aws_time`, `aws_datetime` and `aws_timestamp`, and the message gives the reason. A value of the wrong type gets Pydantic's own `string_type` or `int_type` instead.
 - **JSON Schema shows the type.** Fields use a `format` of `aws-date`, `aws-time`, `aws-datetime` or `aws-timestamp`.
 

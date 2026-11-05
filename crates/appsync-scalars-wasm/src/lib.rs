@@ -89,6 +89,8 @@ mod tests {
     use super::*;
 
     fn run(scalar: u32, value: &[u8]) -> u32 {
+        assert!(value.len() <= INPUT_CAPACITY);
+        // SAFETY: the value fits in the buffer, and tests touching the buffer run one at a time.
         unsafe {
             core::ptr::copy_nonoverlapping(value.as_ptr(), appsync_input_ptr(), value.len());
         }

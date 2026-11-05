@@ -42,7 +42,12 @@ if git diff --quiet "$released_from" HEAD -- "${package_paths[@]}"; then
   exit 0
 fi
 
+# A tag can't be deleted once pushed, so a version that isn't one stops here, not after.
 current="$(sed -n 's/^version = "\(.*\)"$/\1/p' crates/appsync-scalars/Cargo.toml)"
+if ! printf '%s' "$current" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-rc\.[0-9]+)?$'; then
+  echo "crates/appsync-scalars/Cargo.toml has version \"$current\", which isn't a version" >&2
+  exit 1
+fi
 if [ -n "$(git tag --list "v$current")" ]; then
   latest_stable="$(git tag --list 'v[0-9]*' | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1)"
   IFS=. read -r major minor patch <<< "${latest_stable#v}"
@@ -59,6 +64,9 @@ if [ "$version" != "$current" ]; then
     -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
     commit --quiet -m "Release $version"
 fi
+
+# The same check the tag's run makes, before anything permanent happens.
+scripts/check-release.sh "v$version"
 
 git tag "v$version"
 git push --quiet origin "refs/tags/v$version"

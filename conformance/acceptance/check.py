@@ -32,12 +32,16 @@ conformance = Path(sys.argv[1])
 expected = [(c["scalar"], c["value"], c["valid"]) for c in load(conformance / "smoke.json")]
 for stem in ("aws-date", "aws-time", "aws-datetime", "aws-timestamp"):
     vectors = load(conformance / "vectors" / f"{stem}.json")
+    if not vectors["cases"]:
+        sys.exit(f"{stem}.json has no recorded cases")
     for case in vectors["cases"]:
         if can_express(vectors["scalar"], case["value"]):
             for path in ("input_variable", "output"):
                 accepted = case[path]["result"] == "accepted"
                 expected.append((vectors["scalar"], case["value"], accepted))
 
+if not expected:
+    sys.exit("no cases to check")
 mismatches = [case for case in expected if CHECKS[case[0]](case[1]) is not case[2]]
 for scalar, value, valid in mismatches:
     print(f"{scalar} {ascii(value)}: expected valid = {valid}")

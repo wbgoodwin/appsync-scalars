@@ -99,7 +99,7 @@ AppSync gave the same verdict for a GraphQL variable and for resolver output on 
 | [`bindings/go`](bindings/go/README.md) | Go module that runs the embedded module through wazero, with no cgo |
 | [`conformance/`](conformance/README.md) | The live AppSync test suite, and the results it recorded in `vectors/` |
 | [`conformance/smoke.json`](conformance/smoke.json) | Test cases every language's unit tests run |
-| [`conformance/acceptance/`](conformance/acceptance/) | Checks an installed package against those cases and every recorded result |
+| [`conformance/acceptance/`](conformance/acceptance/) | Checks an installed package against those cases and every recorded result its API can express |
 | [`scripts/`](scripts/) | Building, testing and releasing |
 
 Other languages with a WebAssembly runtime can load the same module. Its interface is described in [`crates/appsync-scalars-wasm/src/lib.rs`](crates/appsync-scalars-wasm/src/lib.rs).
@@ -130,7 +130,7 @@ scripts/build-wasm.sh
 
 GitHub Actions runs the tests, and builds and tests each package, for every pull request and push to `main`.
 
-Merging a change to a published package releases it. Once the checks pass on `main`, the workflow picks the next patch version and tags it. It then repeats every check, publishes to crates.io, PyPI and npm, adds the `bindings/go/v1.2.3` tag Go needs, installs each package from its registry to check it against every recorded AppSync result, and creates a GitHub Release with notes from the merged pull requests. Merges that only touch CI, tests or this README don't release anything. Pushing a `v*` tag by hand doesn't start a release, and since tags can't be removed, a stray one would stay in the version history.
+Merging a change to a published package releases it. Once the checks pass on `main`, the workflow picks the next patch version and tags it. It then repeats every check, publishes to crates.io, PyPI and npm, adds the `bindings/go/v1.2.3` tag Go needs, installs each package from its registry to check it against the recorded AppSync results, and creates a GitHub Release with notes from the merged pull requests. Merges that only touch CI, tests or this README don't release anything. The release checks run before the tag is pushed, because tags can't be removed, so a stray one would stay in the version history. Pushing a `v*` tag by hand doesn't start a release.
 
 For a minor or major version, set it in your pull request, and the merge releases that version instead:
 

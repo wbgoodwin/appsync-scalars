@@ -4,9 +4,11 @@ set -euo pipefail
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
 
+# The build goes where CARGO_TARGET_DIR says, so the copy has to come from there too.
+target_dir="${CARGO_TARGET_DIR:-$root/target}"
 cargo build --quiet --manifest-path "$root/Cargo.toml" -p appsync-scalars-wasm \
-  --target wasm32-unknown-unknown --profile wasm-release
-wasm="$root/target/wasm32-unknown-unknown/wasm-release/appsync_scalars_wasm.wasm"
+  --target wasm32-unknown-unknown --profile wasm-release --target-dir "$target_dir"
+wasm="$target_dir/wasm32-unknown-unknown/wasm-release/appsync_scalars_wasm.wasm"
 
 cp "$wasm" "$root/bindings/go/appsync_scalars.wasm"
 

@@ -1,4 +1,4 @@
-use appsync_scalars::{Scalar, validate};
+use appsync_scalars::{Reason, Scalar, validate};
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
 use pyo3::types::{PyBool, PyInt, PyString};
@@ -16,8 +16,13 @@ fn check_timestamp(value: &Bound<'_, PyAny>) -> Result<(), String> {
     if value.is_instance_of::<PyBool>() || !value.is_instance_of::<PyInt>() {
         return Err("invalid AWSTimestamp: expected an integer".to_string());
     }
-    let text = value.str().map_err(|error| error.to_string())?;
-    check_text(Scalar::Timestamp, &text)
+    // The integer's own value counts, not what a subclass's __str__ or __index__ says, and a
+    // value too large for i64 is out of range without asking Python to print every digit.
+    let Ok(timestamp) = value.extract::<i64>() else {
+        let name = Scalar::Timestamp.name();
+        return Err(format!("invalid {name}: {}", Reason::TimestampRange.message()));
+    };
+    validate(Scalar::Timestamp, &timestamp.to_string()).map_err(|error| error.to_string())
 }
 
 macro_rules! text_scalar {
