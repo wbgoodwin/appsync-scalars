@@ -13,11 +13,11 @@ use record::{HttpTransport, Policy, send};
 use serde_json::Value;
 
 const USAGE: &str = "\
-Records how a live AppSync API treats date and time scalar values.
+Records how a live AppSync API treats its scalar values.
 
 Usage:
   appsync-conformance list
-  appsync-conformance probe <AWSDate|AWSTime|AWSDateTime|AWSTimestamp> <json-value>
+  appsync-conformance probe <AWSDate|AWSTime|AWSDateTime|AWSTimestamp|AWSURL|AWSEmail|AWSPhone|AWSIPAddress|AWSJSON> <json-value>
   appsync-conformance record --out <dir> --region <region> --recorded-at <yyyy-mm-dd> [--passes <n>]
 
 probe and record read the API from APPSYNC_URL and APPSYNC_API_KEY.";

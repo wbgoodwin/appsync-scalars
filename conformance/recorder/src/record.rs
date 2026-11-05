@@ -145,7 +145,7 @@ pub fn preflight(transport: &dyn Transport, controls: &[Control], policy: Policy
             let good = request(control.scalar, path, &control.good);
             let (status, body) = send(transport, &good, policy)?;
             match classify(path, status, &body) {
-                Outcome::Accepted { value } if value == control.good => {}
+                Outcome::Accepted { value } if echoes(&value, &control.good) => {}
                 other => {
                     return Err(format!(
                         "{name} {path:?} should echo {} but got {other:?}",
@@ -166,6 +166,18 @@ pub fn preflight(transport: &dyn Transport, controls: &[Control], policy: Policy
         }
     }
     Ok(())
+}
+
+/// Whether an echoed value is the control. An AWSJSON input resolver sees the parsed document
+/// rather than the text, so a string control also matches what it parses to.
+fn echoes(value: &Value, good: &Value) -> bool {
+    if value == good {
+        return true;
+    }
+    match good.as_str().map(serde_json::from_str::<Value>) {
+        Some(Ok(parsed)) => &parsed == value,
+        _ => false,
+    }
 }
 
 /// Results for one case, in the same order as `Path::ALL`.
@@ -375,7 +387,8 @@ mod tests {
         }
     }
 
-    /// Behaves like the echo API, accepting only values that start with a digit.
+    /// Behaves like the echo API, rejecting values that contain "no", which every bad control
+    /// and the sample case "nope" do.
     struct FakeAppSync {
         flaky_value: Option<String>,
         calls: AtomicUsize,
@@ -409,7 +422,7 @@ mod tests {
                 serde_json::from_str(&query[start..end]).unwrap_or(json!("rejected-literal"))
             };
             let text = value.to_string();
-            let mut good = text.trim_matches('"').starts_with(|c: char| c.is_ascii_digit());
+            let mut good = !text.contains("no");
             if self.flaky_value.as_deref() == Some(text.as_str()) && call.is_multiple_of(2) {
                 good = !good;
             }
@@ -529,6 +542,15 @@ mod tests {
     #[test]
     fn preflight_passes_against_a_working_api() {
         preflight(&FakeAppSync::new(), &controls(), fast()).unwrap();
+    }
+
+    #[test]
+    fn a_json_control_matches_its_parsed_form() {
+        let good = json!("{\"a\":1}");
+        assert!(echoes(&good, &good));
+        assert!(echoes(&json!({"a": 1}), &good));
+        assert!(!echoes(&json!({"a": 2}), &good));
+        assert!(!echoes(&json!({"a": 1}), &json!("2021-01-11")));
     }
 
     #[test]

@@ -1,6 +1,6 @@
 # AppSync conformance suite
 
-AWS's documentation conflicts with itself on what the AppSync date and time scalars accept. This suite settles it by sending values to a real AppSync API and recording what happens. The recorded files in `vectors/` are the definition of correct for every language binding.
+AWS's documentation conflicts with itself on what the AppSync scalars accept. This suite settles it by sending values to a real AppSync API and recording what happens. It covers all nine: `AWSDate`, `AWSTime`, `AWSDateTime`, `AWSTimestamp`, `AWSURL`, `AWSEmail`, `AWSPhone`, `AWSIPAddress` and `AWSJSON`. The recorded files in `vectors/` are the definition of correct for every language binding.
 
 ## What gets tested
 
@@ -16,7 +16,7 @@ The API in [`infra/echo-api.yaml`](infra/echo-api.yaml) uses a `NONE` data sourc
 
 ## Vector format
 
-`vectors/aws-date.json`, `aws-time.json`, `aws-datetime.json` and `aws-timestamp.json` each hold a list of cases:
+`vectors/` holds one file per scalar, such as `aws-date.json` or `aws-url.json`, each with a list of cases:
 
 ```json
 {
@@ -36,6 +36,8 @@ The API in [`infra/echo-api.yaml`](infra/echo-api.yaml) uses a `NONE` data sourc
 
 `vectors/scalar-descriptions.json` holds AppSync's own description of each scalar, taken from introspection.
 
+`AWSJSON` is sent two ways: as JSON text in a string, which is the documented form, and as a raw JSON value. An input resolver sees the parsed document rather than the text, so the recorded `value` for an accepted input is what the resolver was given.
+
 Output resolvers use VTL and return the JSON text unchanged, because AppSync rejected a valid `AWSTimestamp` that a JavaScript resolver returned as a bare number. Other JavaScript resolver shapes, such as an object with a timestamp field, are untested. Input resolvers use JavaScript, so a number beyond 2^53 is rounded in the recorded `value` after AppSync has already accepted it.
 
 ## How results stay trustworthy
@@ -54,7 +56,7 @@ You need Rust, the AWS CLI and credentials that can manage AppSync and CloudForm
 AWS_PROFILE=<profile> conformance/live.sh all
 ```
 
-This deploys the stack, records, and deletes the stack, even if recording fails. It defaults to `us-east-1`; set `AWS_REGION` to change that. A run sends about 5,000 queries, which costs about $0.02 at AppSync's rate of $4 per million.
+This deploys the stack, records, and deletes the stack, even if recording fails. It defaults to `us-east-1`; set `AWS_REGION` to change that. A run sends about 10,000 queries, which costs about $0.04 at AppSync's rate of $4 per million.
 
 To keep the API up while exploring, run the steps separately:
 
