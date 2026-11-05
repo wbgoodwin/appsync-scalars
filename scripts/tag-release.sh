@@ -14,6 +14,7 @@ package_paths=(
   crates/appsync-scalars
   crates/appsync-scalars-wasm
   bindings
+  scripts/build-wasm.sh
   ':(exclude)crates/appsync-scalars/tests'
   ':(exclude)bindings/python/tests'
   ':(exclude)bindings/python/uv.lock'

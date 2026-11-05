@@ -86,3 +86,10 @@ test("timestamps must be integers within AppSync's limits", () => {
   assert.throws(() => validateAWSTimestamp("1"), /expected an integer/);
   assert.throws(() => validateAWSTimestamp(9223372036854775808n), /out of range/);
 });
+
+test("the embedded module stays on short lines, so scanners don't read it as minified", () => {
+  const source = readFileSync(new URL("../wasm.generated.js", import.meta.url), "utf8");
+  for (const line of source.split("\n")) {
+    assert.ok(line.length <= 100, `a line has ${line.length} characters`);
+  }
+});
