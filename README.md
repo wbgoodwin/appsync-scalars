@@ -81,7 +81,7 @@ scripts/set-version.sh 1.3.0
 
 The version on `main` can lag behind the latest release, because each patch version goes in a commit that only its tag points at. The tags are the record of what was released.
 
-Rulesets stop release tags being moved or deleted, because registries and Go's checksum database keep a version forever. Only admins and this workflow can create them. If a release fails partway, rerun the failed jobs, which skip anything already on a registry. If its run never started, start it from the tag:
+Rulesets stop release tags being moved or deleted, because registries and Go's checksum database keep a version forever. If a release fails partway, rerun the failed jobs, which skip anything already on a registry. If its run never started, start it from the tag:
 
 ```bash
 gh workflow run ci.yml --ref v1.2.3
