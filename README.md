@@ -81,7 +81,7 @@ The `validate_` functions give the reason instead. These are the ones that come 
 | `hour is out of range` | `24:00` | `00` to `23`; midnight at the end of a day is the next day's `00:00`. |
 | `day is out of range for the month` | `2021-02-29` | A real calendar date. |
 | `format not recognized` | `+2021-01-11`, `2021-1-11`, `2021/01/11` | Four-digit years take no `+`, and every field is zero-padded with `-` and `:` separators. |
-| `time zone offset must be Z, +hh:mm or +hh:mm:ss` | `2021-01-11+05` | `AWSDate` and `AWSTime` want the minutes; only `AWSDateTime` takes an hours-only offset. |
+| `time zone offset must be Z, +hh:mm or +hh:mm:ss` | `2021-01-11T12:30:24+0900`, `2021-01-11+05` | The colon is required: `+0900` is the basic ISO 8601 form, which many formatters produce, and AppSync wants `+09:00`. `AWSDate` and `AWSTime` also want the minutes; only `AWSDateTime` takes an hours-only offset. |
 | `expected an integer` | `1610368224.5`, `"1610368224"` | An `AWSTimestamp` is a whole number in JSON, not a float or a string. AppSync also rejects `1000.0` from a resolver, which JavaScript can't tell from `1000`, so this library can't catch that one. |
 
 A timestamp in milliseconds, such as `1610368224000`, is valid to AppSync and to this library: it is simply a date about 50,000 years from now. AppSync's limits allow years up to a billion either way.
