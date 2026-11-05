@@ -130,7 +130,13 @@ scripts/build-wasm.sh
 
 GitHub Actions runs the tests, and builds and tests each package, for every pull request and push to `main`.
 
-Merging a change to a published package releases it. Once the checks pass on `main`, the workflow picks the next patch version and tags it. It then repeats every check, publishes to crates.io, PyPI and npm, adds the `bindings/go/v1.2.3` tag Go needs, and installs each package from its registry to check it against every recorded AppSync result. Merges that only touch CI, tests or this README don't release anything. Pushing a `v*` tag by hand doesn't start a release, and since tags can't be removed, a stray one would stay in the version history.
+Merging a change to a published package releases it. Once the checks pass on `main`, the workflow deploys a temporary AppSync API, records how AppSync treats every test value, and checks the validator against those results. If they agree, it picks the next patch version and tags it. It then repeats every check, publishes to crates.io, PyPI and npm, adds the `bindings/go/v1.2.3` tag Go needs, and installs each package from its registry to check it against every recorded AppSync result. Merges that only touch CI, tests or this README don't release anything. Pushing a `v*` tag by hand doesn't start a release, and since tags can't be removed, a stray one would stay in the version history.
+
+A disagreement stops the release, because it means AppSync's behavior has changed or the validator is wrong. The run keeps what it recorded as the `live-vectors` artifact. To see whether the validator still matches AppSync without releasing anything:
+
+```bash
+gh workflow run ci.yml --ref main
+```
 
 For a minor or major version, set it in your pull request, and the merge releases that version instead:
 

@@ -7,6 +7,8 @@ set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 stack="${APPSYNC_CONFORMANCE_STACK:-appsync-scalars-conformance}"
 region="${AWS_REGION:-us-east-1}"
+# CI sets this so CloudFormation manages the stack with its own role.
+role_args=(${APPSYNC_CONFORMANCE_DEPLOY_ROLE:+--role-arn "$APPSYNC_CONFORMANCE_DEPLOY_ROLE"})
 
 stack_output() {
   aws cloudformation describe-stacks --region "$region" --stack-name "$stack" \
@@ -20,7 +22,7 @@ recorder() {
 
 deploy() {
   aws cloudformation deploy --region "$region" --stack-name "$stack" \
-    --template-file "$here/infra/echo-api.yaml" --no-fail-on-empty-changeset
+    --template-file "$here/infra/echo-api.yaml" --no-fail-on-empty-changeset ${role_args[@]+"${role_args[@]}"}
 }
 
 record() {
@@ -28,7 +30,7 @@ record() {
 }
 
 teardown() {
-  aws cloudformation delete-stack --region "$region" --stack-name "$stack"
+  aws cloudformation delete-stack --region "$region" --stack-name "$stack" ${role_args[@]+"${role_args[@]}"}
   aws cloudformation wait stack-delete-complete --region "$region" --stack-name "$stack"
 }
 

@@ -1,9 +1,11 @@
 name: CI
 
 # Every pull request and push to main runs the tests, then builds each package and tests it
-# installed. A merge that changes a published package then tags a release and starts a run on
-# that tag, which repeats the tests, publishes, and then tests what the registries serve. Pushing
-# a tag doesn't start anything, so only this pipeline releases. See "Releasing" in README.md.
+# installed. A merge that changes a published package then checks the validator against a live
+# AppSync API, tags a release and starts a run on that tag, which repeats the tests, publishes,
+# and then tests what the registries serve. Pushing a tag doesn't start anything, so only this
+# pipeline releases. Starting this workflow on main runs the live check without releasing. See
+# "Releasing" in README.md.
 on:
   push:
     branches: [main]
@@ -205,10 +207,69 @@ jobs:
             [ "$result" = success ]
           done
 
+  # Works out whether this commit would release, so the live check only runs when it matters.
+  release-plan:
+    if: github.ref == 'refs/heads/main'
+    needs: ci-passed
+    runs-on: ubuntu-24.04
+    outputs:
+      tag: ${{ steps.plan.outputs.tag }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # Finding the last release needs the history and tags.
+          persist-credentials: false
+      - name: Check whether a published package changed
+        id: plan
+        run: echo "tag=$(scripts/tag-release.sh --dry-run)" >> "$GITHUB_OUTPUT"
+
+  # Records what AppSync does today and checks the validator against it, because AWS can change
+  # the rules without this repository changing. Each run gets its own stack, which it deletes.
+  live-conformance:
+    if: needs.release-plan.outputs.tag != '' || github.event_name == 'workflow_dispatch'
+    needs: release-plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      AWS_REGION: us-east-1
+      APPSYNC_CONFORMANCE_STACK: appsync-scalars-conformance-${{ github.run_id }}-${{ github.run_attempt }}
+      APPSYNC_CONFORMANCE_DEPLOY_ROLE: ${{ vars.AWS_CONFORMANCE_DEPLOY_ROLE_ARN }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: rustup toolchain install
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        id: aws
+        with:
+          role-to-assume: ${{ vars.AWS_CONFORMANCE_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Deploy the echo API
+        run: conformance/live.sh deploy
+      - name: Record how AppSync treats every test value
+        run: conformance/live.sh record
+      - name: Check the validator against today's results
+        run: cargo test --quiet -p appsync-scalars --test shared_cases
+      - name: Show what changed since the committed results
+        if: always()
+        run: git diff --stat -- conformance/vectors
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: live-vectors
+          path: conformance/vectors
+          if-no-files-found: ignore
+      - name: Delete the echo API
+        if: always() && steps.aws.outcome == 'success'
+        run: conformance/live.sh teardown
+
   # Starts a run on the new tag, which tests and publishes exactly what the tag holds.
   tag-release:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: ci-passed
+    if: github.event_name == 'push' && needs.release-plan.outputs.tag != ''
+    needs: [release-plan, live-conformance]
     runs-on: ubuntu-24.04
     concurrency: tag-release
     permissions:

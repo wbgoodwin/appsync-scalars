@@ -76,4 +76,17 @@ AWS_PROFILE=<profile> conformance/live.sh teardown
 
 Run the offline tests with `cargo test`. They need no AWS access.
 
+## In CI
+
+GitHub Actions runs this suite on `main` before each release, using [`infra/ci-access.yaml`](infra/ci-access.yaml). That template gives `main` a role that can only run CloudFormation on stacks named `appsync-scalars-conformance*`, with no stored keys. To set it up, deploy it once with admin credentials:
+
+```bash
+AWS_PROFILE=<profile> aws cloudformation deploy --region us-east-1 --stack-name appsync-scalars-ci-access --template-file conformance/infra/ci-access.yaml --capabilities CAPABILITY_IAM
+```
+
+If the account already has a GitHub OIDC provider, also pass `--parameter-overrides ExistingOidcProviderArn=<arn>`. Then set the repository variables `AWS_CONFORMANCE_ROLE_ARN` and `AWS_CONFORMANCE_DEPLOY_ROLE_ARN` to the stack's `WorkflowRoleArn` and `DeployRoleArn` outputs.
+
+CI checks the validator against what it records, but doesn't commit the results. To update `vectors/`, record them yourself as described above.
+
+
 [`acceptance/`](acceptance/) holds a check for each language that compares an installed package against `smoke.json` and every recorded result. [`scripts/acceptance.sh`](../scripts/acceptance.sh) runs them.

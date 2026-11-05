@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Tags a release if this commit changes a published package since the last release, and prints
-# the tag. Prints nothing if there's nothing to release.
+# the tag. Prints nothing if there's nothing to release. With --dry-run, it only prints the tag.
 #
 # It uses a version set by hand if that hasn't been released yet, and otherwise the next patch
 # version. That version goes in a commit on top of this one, which only the tag points at, so
@@ -49,6 +49,11 @@ if [ -n "$(git tag --list "v$current")" ]; then
   version="$major.$minor.$((patch + 1))"
 else
   version="$current"
+fi
+
+if [ "${1:-}" = "--dry-run" ]; then
+  echo "v$version"
+  exit 0
 fi
 
 if [ "$version" != "$current" ]; then

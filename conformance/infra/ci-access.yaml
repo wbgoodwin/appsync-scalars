@@ -1,0 +1,102 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+  Lets GitHub Actions on this repository's main branch deploy and delete the conformance echo API.
+  It stores no keys, because GitHub proves the workflow's identity each time.
+
+Parameters:
+  ExistingOidcProviderArn:
+    Type: String
+    Default: ""
+    Description: >-
+      The GitHub OIDC provider's ARN, if this account already has one. An account can only have
+      one per URL. Leave it empty to create one.
+
+Conditions:
+  CreateOidcProvider: !Equals [!Ref ExistingOidcProviderArn, ""]
+
+Resources:
+  GitHubOidcProvider:
+    Type: AWS::IAM::OIDCProvider
+    Condition: CreateOidcProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList:
+        - sts.amazonaws.com
+
+  # CloudFormation uses this role to create the echo API, and nothing else can assume it. That
+  # keeps AppSync permissions away from the workflow, so it can't touch other APIs in the account
+  # directly.
+  DeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: Used by CloudFormation to manage the appsync-scalars conformance echo API
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: cloudformation.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: manage-appsync
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: appsync:*
+                Resource: "*"
+                Condition:
+                  StringEquals:
+                    aws:RequestedRegion: !Ref AWS::Region
+
+  # GitHub Actions uses this role. It can only run CloudFormation on stacks with the conformance
+  # name, and only from main. Both spellings cover how GitHub writes the subject claim, which has
+  # included the owner and repository IDs on this repository's publishing tokens.
+  WorkflowRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: Used by GitHub Actions on main to run the appsync-scalars conformance suite
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !If [CreateOidcProvider, !Ref GitHubOidcProvider, !Ref ExistingOidcProviderArn]
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+                token.actions.githubusercontent.com:sub:
+                  - repo:wbgoodwin@35696584/appsync-scalars@1446213645:ref:refs/heads/main
+                  - repo:wbgoodwin/appsync-scalars:ref:refs/heads/main
+      Policies:
+        - PolicyName: run-conformance-stacks
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - cloudformation:CreateChangeSet
+                  - cloudformation:DeleteChangeSet
+                  - cloudformation:DeleteStack
+                  - cloudformation:DescribeChangeSet
+                  - cloudformation:DescribeStackEvents
+                  - cloudformation:DescribeStacks
+                  - cloudformation:ExecuteChangeSet
+                  - cloudformation:GetTemplateSummary
+                Resource:
+                  - !Sub arn:${AWS::Partition}:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/appsync-scalars-conformance*/*
+                  - !Sub arn:${AWS::Partition}:cloudformation:${AWS::Region}:${AWS::AccountId}:changeSet/*
+              - Effect: Allow
+                Action: iam:PassRole
+                Resource: !GetAtt DeployRole.Arn
+                Condition:
+                  StringEquals:
+                    iam:PassedToService: cloudformation.amazonaws.com
+
+Outputs:
+  WorkflowRoleArn:
+    Value: !GetAtt WorkflowRole.Arn
+  DeployRoleArn:
+    Value: !GetAtt DeployRole.Arn
