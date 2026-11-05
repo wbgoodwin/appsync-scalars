@@ -157,6 +157,14 @@ pub fn preflight(transport: &dyn Transport, controls: &[Control], policy: Policy
             let bad = request(control.scalar, path, &control.bad);
             let (status, body) = send(transport, &bad, policy)?;
             let outcome = classify(path, status, &body);
+            // AWSJSON output encodes whatever the resolver returns, so a string it can't parse is
+            // still a string to encode. There the bad control only has to get a clear verdict.
+            if control.scalar == Scalar::Json && path == Path::Output {
+                if outcome.is_unexpected() {
+                    return Err(format!("{name} {path:?} gave an unclear response to {}: {outcome:?}", control.bad));
+                }
+                continue;
+            }
             if !outcome.is_rejected() {
                 return Err(format!(
                     "{name} {path:?} should reject {} but got {outcome:?}",
@@ -168,16 +176,15 @@ pub fn preflight(transport: &dyn Transport, controls: &[Control], policy: Policy
     Ok(())
 }
 
-/// Whether an echoed value is the control. An AWSJSON input resolver sees the parsed document
-/// rather than the text, so a string control also matches what it parses to.
+/// Whether an echoed value is the control. AWSJSON changes its form on the way: an input
+/// resolver sees the parsed document rather than the text, and output arrives JSON-encoded, so
+/// the string `{"a":1}` comes back as `"{\"a\":1}"`.
 fn echoes(value: &Value, good: &Value) -> bool {
     if value == good {
         return true;
     }
-    match good.as_str().map(serde_json::from_str::<Value>) {
-        Some(Ok(parsed)) => &parsed == value,
-        _ => false,
-    }
+    let parse = |v: &Value| v.as_str().and_then(|text| serde_json::from_str::<Value>(text).ok());
+    parse(good).as_ref() == Some(value) || parse(value).as_ref() == Some(good)
 }
 
 /// Results for one case, in the same order as `Path::ALL`.
@@ -551,6 +558,41 @@ mod tests {
         assert!(echoes(&json!({"a": 1}), &good));
         assert!(!echoes(&json!({"a": 2}), &good));
         assert!(!echoes(&json!({"a": 1}), &json!("2021-01-11")));
+        // What AppSync returned for the control on the output path.
+        assert!(echoes(&json!("\"{\\\"a\\\":1}\""), &good));
+        assert!(!echoes(&json!("\"{\\\"a\\\":2}\""), &good));
+    }
+
+    #[test]
+    fn json_output_only_needs_a_clear_verdict_for_the_bad_control() {
+        /// The fake API, except that AWSJSON output encodes whatever text it is given and never
+        /// rejects, which is what AppSync did with the control.
+        struct EncodingJsonOutput(FakeAppSync);
+        impl Transport for EncodingJsonOutput {
+            fn post(&self, body: &str) -> Result<(u16, String), String> {
+                let request: Value = serde_json::from_str(body).unwrap();
+                if request["query"].as_str().unwrap().contains("outputJson") {
+                    let sent = request["variables"]["json"].as_str().unwrap();
+                    return Ok((200, json!({ "data": { "r": sent } }).to_string()));
+                }
+                self.0.post(body)
+            }
+        }
+        let json_control: Vec<Control> = controls().into_iter().filter(|c| c.scalar == Scalar::Json).collect();
+        preflight(&EncodingJsonOutput(FakeAppSync::new()), &json_control, fast()).unwrap();
+
+        /// An unclear response on that path still stops the run.
+        struct BrokenJsonOutput;
+        impl Transport for BrokenJsonOutput {
+            fn post(&self, body: &str) -> Result<(u16, String), String> {
+                if body.contains("outputJson") && body.contains("not json") {
+                    return Ok((200, json!({ "errors": [{ "message": "A code error occurred" }] }).to_string()));
+                }
+                EncodingJsonOutput(FakeAppSync::new()).post(body)
+            }
+        }
+        let error = preflight(&BrokenJsonOutput, &json_control, fast()).unwrap_err();
+        assert!(error.contains("unclear response"), "{error}");
     }
 
     #[test]

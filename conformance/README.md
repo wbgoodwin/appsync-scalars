@@ -36,7 +36,7 @@ The API in [`infra/echo-api.yaml`](infra/echo-api.yaml) uses a `NONE` data sourc
 
 `vectors/scalar-descriptions.json` holds AppSync's own description of each scalar, taken from introspection.
 
-`AWSJSON` is sent two ways: as JSON text in a string, which is the documented form, and as a raw JSON value. An input resolver sees the parsed document rather than the text, so the recorded `value` for an accepted input is what the resolver was given.
+`AWSJSON` is sent two ways: as JSON text in a string, which is the documented form, and as a raw JSON value. An input resolver sees the parsed document rather than the text, so the recorded `value` for an accepted input is what the resolver was given. On output, AppSync JSON-encodes whatever the resolver returns, so the string `{"a":1}` reaches the client as `"{\"a\":1}"`. Because of that, preflight only asks the output path for a clear verdict on the bad `AWSJSON` control, not a rejection.
 
 Output resolvers use VTL and return the JSON text unchanged, because AppSync rejected a valid `AWSTimestamp` that a JavaScript resolver returned as a bare number. Other JavaScript resolver shapes, such as an object with a timestamp field, are untested. Input resolvers use JavaScript, so a number beyond 2^53 is rounded in the recorded `value` after AppSync has already accepted it.
 
