@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Stops a release unless every package has the tag's version and Cargo.lock is up to date.
+# Stops a release unless the commit is on main, every package has the tag's version, and
+# Cargo.lock is up to date.
 # Usage: scripts/check-release.sh v1.2.3 or v1.2.3-rc.1
 set -euo pipefail
 
@@ -8,6 +9,13 @@ cd "$(dirname "$0")/.."
 tag="$1"
 version="${tag#v}"
 status=0
+
+# A tag publishes whatever commit it points at, so that has to be code that reached main.
+git fetch --quiet origin main
+if ! git merge-base --is-ancestor HEAD origin/main; then
+  echo "$(git rev-parse --short HEAD) isn't on main, so switch to main and pull first" >&2
+  status=1
+fi
 
 check() {
   if [ "$2" != "$3" ]; then

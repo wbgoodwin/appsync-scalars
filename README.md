@@ -71,11 +71,13 @@ scripts/build-wasm.sh
 
 GitHub Actions runs the tests, and builds and tests a wheel on Linux, macOS and Windows, for every pull request and push to `main`.
 
-To release, set the new version in `crates/appsync-scalars/Cargo.toml`, `bindings/python/pyproject.toml` and `bindings/js/package.json`, and run `cargo check` to update `Cargo.lock`. Merge that to `main`, then push a tag. The tag must match those versions, or the release stops before publishing anything.
+To release, set the new version in `crates/appsync-scalars/Cargo.toml`, `bindings/python/pyproject.toml` and `bindings/js/package.json`, and run `cargo check` to update `Cargo.lock`. Merge that to `main`, then check it and push a tag:
 
 ```bash
-git tag v1.2.3 && git push origin v1.2.3
+git switch main && git pull && scripts/check-release.sh v1.2.3 && git tag v1.2.3 && git push origin v1.2.3
 ```
+
+Rulesets stop release tags being moved or deleted, because registries and Go's checksum database keep a version forever. If a tag turns out to be wrong, release the next version instead. `main` only takes pull requests that pass the `ci-passed` check.
 
 The workflow repeats every check, publishes to crates.io, PyPI and npm, and adds the `bindings/go/v1.2.3` tag Go needs. It then installs each package from its registry and checks it against every recorded AppSync result. It skips anything already on a registry, so rerunning a partly failed release is safe.
 
