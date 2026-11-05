@@ -10,7 +10,7 @@ Also available for [Python](https://github.com/wbgoodwin/appsync-scalars/blob/ma
 cargo add appsync-scalars
 ```
 
-The crate is `no_std`, doesn't allocate and has no dependencies.
+The crate is `no_std`, doesn't allocate and has no dependencies. It needs Rust 1.87 or later.
 
 ## Usage
 
