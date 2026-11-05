@@ -92,17 +92,18 @@ pub fn send(transport: &dyn Transport, body: &str, policy: Policy) -> Result<(u1
     Err(format!("giving up after {} attempts: {last_failure}", policy.retries + 1))
 }
 
-/// Sends every body, returning responses in the same order.
+/// Sends every body, returning responses in the same order. A failure gives the index of the
+/// request that failed, so the caller can say which value caused it.
 pub fn send_all(
     transport: &dyn Transport,
     bodies: &[String],
     policy: Policy,
-) -> Result<Vec<(u16, String)>, String> {
+) -> Result<Vec<(u16, String)>, (usize, String)> {
     let next = AtomicUsize::new(0);
     let done = AtomicUsize::new(0);
     let stop = AtomicBool::new(false);
     let responses: Mutex<Vec<Option<(u16, String)>>> = Mutex::new(vec![None; bodies.len()]);
-    let failure: Mutex<Option<String>> = Mutex::new(None);
+    let failure: Mutex<Option<(usize, String)>> = Mutex::new(None);
 
     thread::scope(|scope| {
         for _ in 0..policy.workers.max(1) {
@@ -114,7 +115,7 @@ pub fn send_all(
                         Ok(response) => responses.lock().unwrap()[index] = Some(response),
                         Err(error) => {
                             stop.store(true, Ordering::Relaxed);
-                            failure.lock().unwrap().get_or_insert(error);
+                            failure.lock().unwrap().get_or_insert((index, error));
                         }
                     }
                     let finished = done.fetch_add(1, Ordering::Relaxed) + 1;
@@ -212,7 +213,14 @@ pub fn run(
     let mut problems: Vec<String> = Vec::new();
     for pass in 0..passes.max(1) {
         eprintln!("pass {} of {}: {} requests", pass + 1, passes.max(1), bodies.len());
-        let responses = send_all(transport, &bodies, policy)?;
+        let responses = send_all(transport, &bodies, policy).map_err(|(i, error)| {
+            let (index, path) = tasks[i];
+            let mut value = cases[index].value.to_string();
+            if value.len() > 200 {
+                value = format!("{}... ({} characters)", &value[..value.floor_char_boundary(200)], value.len());
+            }
+            format!("{} {value} on {path:?}: {error}", cases[index].scalar.type_name())
+        })?;
         let outcomes: Vec<Outcome> = tasks
             .iter()
             .zip(&responses)
@@ -544,6 +552,23 @@ mod tests {
         let error = run(&Broken, &sample_cases(), 1, fast()).err().expect("should fail");
         assert!(error.contains("nothing written"), "{error}");
         assert!(error.contains("A code error occurred"), "{error}");
+    }
+
+    #[test]
+    fn run_names_the_value_that_keeps_failing() {
+        /// Fails every request for one value, the way AppSync did for one recorded case.
+        struct FailsOn(&'static str);
+        impl Transport for FailsOn {
+            fn post(&self, body: &str) -> Result<(u16, String), String> {
+                if body.contains(self.0) {
+                    return Ok((500, "InternalFailure".into()));
+                }
+                FakeAppSync::new().post(body)
+            }
+        }
+        let error = run(&FailsOn("nope"), &sample_cases(), 1, fast()).err().expect("should fail");
+        assert!(error.starts_with("AWSDate \"nope\" on "), "{error}");
+        assert!(error.contains("InternalFailure"), "{error}");
     }
 
     #[test]

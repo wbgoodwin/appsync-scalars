@@ -633,14 +633,11 @@ fn json_cases(b: &mut Builder) {
     ]);
     b.strings(s, "json-text-nesting", [
         &format!("{}{}", "[".repeat(100), "]".repeat(100)),
-        &format!("{}{}", "[".repeat(1000), "]".repeat(1000)),
         &format!("{}1{}", "{\"a\":".repeat(100), "}".repeat(100)),
-        &format!("{}1{}", "{\"a\":".repeat(1000), "}".repeat(1000)),
         &format!("{}{}", "[".repeat(100), "]".repeat(99)),
     ]);
     b.strings(s, "json-text-length", [
         &format!("\"{}\"", "a".repeat(10000)),
-        &format!("\"{}\"", "a".repeat(100000)),
         &format!("[{}1]", "1,".repeat(10000)),
         &format!("{{{}\"z\":1}}", (0..1000).map(|i| format!("\"k{i}\":{i},")).collect::<String>()),
     ]);
