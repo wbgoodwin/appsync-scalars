@@ -3,7 +3,7 @@ name = "appsync-conformance"
 version = "0.1.0"
 edition = "2024"
 publish = false
-description = "Records how a live AWS AppSync API treats date and time scalar values."
+description = "Records how a live AWS AppSync API treats its scalar values."
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }

@@ -92,17 +92,18 @@ pub fn send(transport: &dyn Transport, body: &str, policy: Policy) -> Result<(u1
     Err(format!("giving up after {} attempts: {last_failure}", policy.retries + 1))
 }
 
-/// Sends every body, returning responses in the same order.
+/// Sends every body, returning responses in the same order. A failure gives the index of the
+/// request that failed, so the caller can say which value caused it.
 pub fn send_all(
     transport: &dyn Transport,
     bodies: &[String],
     policy: Policy,
-) -> Result<Vec<(u16, String)>, String> {
+) -> Result<Vec<(u16, String)>, (usize, String)> {
     let next = AtomicUsize::new(0);
     let done = AtomicUsize::new(0);
     let stop = AtomicBool::new(false);
     let responses: Mutex<Vec<Option<(u16, String)>>> = Mutex::new(vec![None; bodies.len()]);
-    let failure: Mutex<Option<String>> = Mutex::new(None);
+    let failure: Mutex<Option<(usize, String)>> = Mutex::new(None);
 
     thread::scope(|scope| {
         for _ in 0..policy.workers.max(1) {
@@ -114,7 +115,7 @@ pub fn send_all(
                         Ok(response) => responses.lock().unwrap()[index] = Some(response),
                         Err(error) => {
                             stop.store(true, Ordering::Relaxed);
-                            failure.lock().unwrap().get_or_insert(error);
+                            failure.lock().unwrap().get_or_insert((index, error));
                         }
                     }
                     let finished = done.fetch_add(1, Ordering::Relaxed) + 1;
@@ -145,7 +146,7 @@ pub fn preflight(transport: &dyn Transport, controls: &[Control], policy: Policy
             let good = request(control.scalar, path, &control.good);
             let (status, body) = send(transport, &good, policy)?;
             match classify(path, status, &body) {
-                Outcome::Accepted { value } if value == control.good => {}
+                Outcome::Accepted { value } if echoes(&value, &control.good) => {}
                 other => {
                     return Err(format!(
                         "{name} {path:?} should echo {} but got {other:?}",
@@ -157,6 +158,14 @@ pub fn preflight(transport: &dyn Transport, controls: &[Control], policy: Policy
             let bad = request(control.scalar, path, &control.bad);
             let (status, body) = send(transport, &bad, policy)?;
             let outcome = classify(path, status, &body);
+            // AWSJSON output encodes whatever the resolver returns, so a string it can't parse is
+            // still a string to encode. There the bad control only has to get a clear verdict.
+            if control.scalar == Scalar::Json && path == Path::Output {
+                if outcome.is_unexpected() {
+                    return Err(format!("{name} {path:?} gave an unclear response to {}: {outcome:?}", control.bad));
+                }
+                continue;
+            }
             if !outcome.is_rejected() {
                 return Err(format!(
                     "{name} {path:?} should reject {} but got {outcome:?}",
@@ -166,6 +175,17 @@ pub fn preflight(transport: &dyn Transport, controls: &[Control], policy: Policy
         }
     }
     Ok(())
+}
+
+/// Whether an echoed value is the control. AWSJSON changes its form on the way: an input
+/// resolver sees the parsed document rather than the text, and output arrives JSON-encoded, so
+/// the string `{"a":1}` comes back as `"{\"a\":1}"`.
+fn echoes(value: &Value, good: &Value) -> bool {
+    if value == good {
+        return true;
+    }
+    let parse = |v: &Value| v.as_str().and_then(|text| serde_json::from_str::<Value>(text).ok());
+    parse(good).as_ref() == Some(value) || parse(value).as_ref() == Some(good)
 }
 
 /// Results for one case, in the same order as `Path::ALL`.
@@ -193,7 +213,14 @@ pub fn run(
     let mut problems: Vec<String> = Vec::new();
     for pass in 0..passes.max(1) {
         eprintln!("pass {} of {}: {} requests", pass + 1, passes.max(1), bodies.len());
-        let responses = send_all(transport, &bodies, policy)?;
+        let responses = send_all(transport, &bodies, policy).map_err(|(i, error)| {
+            let (index, path) = tasks[i];
+            let mut value = cases[index].value.to_string();
+            if value.len() > 200 {
+                value = format!("{}... ({} characters)", &value[..value.floor_char_boundary(200)], value.len());
+            }
+            format!("{} {value} on {path:?}: {error}", cases[index].scalar.type_name())
+        })?;
         let outcomes: Vec<Outcome> = tasks
             .iter()
             .zip(&responses)
@@ -375,7 +402,8 @@ mod tests {
         }
     }
 
-    /// Behaves like the echo API, accepting only values that start with a digit.
+    /// Behaves like the echo API, rejecting values that contain "no", which every bad control
+    /// and the sample case "nope" do.
     struct FakeAppSync {
         flaky_value: Option<String>,
         calls: AtomicUsize,
@@ -409,7 +437,7 @@ mod tests {
                 serde_json::from_str(&query[start..end]).unwrap_or(json!("rejected-literal"))
             };
             let text = value.to_string();
-            let mut good = text.trim_matches('"').starts_with(|c: char| c.is_ascii_digit());
+            let mut good = !text.contains("no");
             if self.flaky_value.as_deref() == Some(text.as_str()) && call.is_multiple_of(2) {
                 good = !good;
             }
@@ -527,8 +555,69 @@ mod tests {
     }
 
     #[test]
+    fn run_names_the_value_that_keeps_failing() {
+        /// Fails every request for one value, the way AppSync did for one recorded case.
+        struct FailsOn(&'static str);
+        impl Transport for FailsOn {
+            fn post(&self, body: &str) -> Result<(u16, String), String> {
+                if body.contains(self.0) {
+                    return Ok((500, "InternalFailure".into()));
+                }
+                FakeAppSync::new().post(body)
+            }
+        }
+        let error = run(&FailsOn("nope"), &sample_cases(), 1, fast()).err().expect("should fail");
+        assert!(error.starts_with("AWSDate \"nope\" on "), "{error}");
+        assert!(error.contains("InternalFailure"), "{error}");
+    }
+
+    #[test]
     fn preflight_passes_against_a_working_api() {
         preflight(&FakeAppSync::new(), &controls(), fast()).unwrap();
+    }
+
+    #[test]
+    fn a_json_control_matches_its_parsed_form() {
+        let good = json!("{\"a\":1}");
+        assert!(echoes(&good, &good));
+        assert!(echoes(&json!({"a": 1}), &good));
+        assert!(!echoes(&json!({"a": 2}), &good));
+        assert!(!echoes(&json!({"a": 1}), &json!("2021-01-11")));
+        // What AppSync returned for the control on the output path.
+        assert!(echoes(&json!("\"{\\\"a\\\":1}\""), &good));
+        assert!(!echoes(&json!("\"{\\\"a\\\":2}\""), &good));
+    }
+
+    #[test]
+    fn json_output_only_needs_a_clear_verdict_for_the_bad_control() {
+        /// The fake API, except that AWSJSON output encodes whatever text it is given and never
+        /// rejects, which is what AppSync did with the control.
+        struct EncodingJsonOutput(FakeAppSync);
+        impl Transport for EncodingJsonOutput {
+            fn post(&self, body: &str) -> Result<(u16, String), String> {
+                let request: Value = serde_json::from_str(body).unwrap();
+                if request["query"].as_str().unwrap().contains("outputJson") {
+                    let sent = request["variables"]["json"].as_str().unwrap();
+                    return Ok((200, json!({ "data": { "r": sent } }).to_string()));
+                }
+                self.0.post(body)
+            }
+        }
+        let json_control: Vec<Control> = controls().into_iter().filter(|c| c.scalar == Scalar::Json).collect();
+        preflight(&EncodingJsonOutput(FakeAppSync::new()), &json_control, fast()).unwrap();
+
+        /// An unclear response on that path still stops the run.
+        struct BrokenJsonOutput;
+        impl Transport for BrokenJsonOutput {
+            fn post(&self, body: &str) -> Result<(u16, String), String> {
+                if body.contains("outputJson") && body.contains("not json") {
+                    return Ok((200, json!({ "errors": [{ "message": "A code error occurred" }] }).to_string()));
+                }
+                EncodingJsonOutput(FakeAppSync::new()).post(body)
+            }
+        }
+        let error = preflight(&BrokenJsonOutput, &json_control, fast()).unwrap_err();
+        assert!(error.contains("unclear response"), "{error}");
     }
 
     #[test]

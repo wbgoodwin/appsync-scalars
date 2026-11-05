@@ -8,14 +8,24 @@ pub enum Scalar {
     Time,
     DateTime,
     Timestamp,
+    Url,
+    Email,
+    Phone,
+    IpAddress,
+    Json,
 }
 
 impl Scalar {
-    pub const ALL: [Scalar; 4] = [
+    pub const ALL: [Scalar; 9] = [
         Scalar::Date,
         Scalar::Time,
         Scalar::DateTime,
         Scalar::Timestamp,
+        Scalar::Url,
+        Scalar::Email,
+        Scalar::Phone,
+        Scalar::IpAddress,
+        Scalar::Json,
     ];
 
     pub fn type_name(self) -> &'static str {
@@ -24,6 +34,11 @@ impl Scalar {
             Scalar::Time => "AWSTime",
             Scalar::DateTime => "AWSDateTime",
             Scalar::Timestamp => "AWSTimestamp",
+            Scalar::Url => "AWSURL",
+            Scalar::Email => "AWSEmail",
+            Scalar::Phone => "AWSPhone",
+            Scalar::IpAddress => "AWSIPAddress",
+            Scalar::Json => "AWSJSON",
         }
     }
 
@@ -33,6 +48,11 @@ impl Scalar {
             Scalar::Time => "aws-time",
             Scalar::DateTime => "aws-datetime",
             Scalar::Timestamp => "aws-timestamp",
+            Scalar::Url => "aws-url",
+            Scalar::Email => "aws-email",
+            Scalar::Phone => "aws-phone",
+            Scalar::IpAddress => "aws-ipaddress",
+            Scalar::Json => "aws-json",
         }
     }
 
@@ -46,6 +66,11 @@ impl Scalar {
             Scalar::Time => "Time",
             Scalar::DateTime => "DateTime",
             Scalar::Timestamp => "Timestamp",
+            Scalar::Url => "Url",
+            Scalar::Email => "Email",
+            Scalar::Phone => "Phone",
+            Scalar::IpAddress => "IpAddress",
+            Scalar::Json => "Json",
         }
     }
 }
