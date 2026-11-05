@@ -1,8 +1,9 @@
 name: CI
 
 # Every pull request and push to main runs the tests, then builds each package and tests it
-# installed. A tag like v1.2.3 or v1.2.3-rc.1 does the same, publishes, and then tests what the
-# registries serve. See "Releasing" in README.md.
+# installed. A merge that changes a published package then tags a release. A tag like v1.2.3 or
+# v1.2.3-rc.1 runs the same tests, publishes, and then tests what the registries serve. See
+# "Releasing" in README.md.
 on:
   push:
     branches: [main]
@@ -10,6 +11,7 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+"
       - "v[0-9]+.[0-9]+.[0-9]+-rc.[0-9]+"
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -205,6 +207,35 @@ jobs:
           for result in $RESULTS; do
             [ "$result" = success ]
           done
+
+  # A tag pushed with this workflow's token can't start a run by itself, so this starts one, which
+  # tests and publishes exactly what the tag holds.
+  tag-release:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: ci-passed
+    runs-on: ubuntu-24.04
+    concurrency: tag-release
+    permissions:
+      actions: write
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # Finding the last release needs the history and tags.
+          persist-credentials: true # Pushes the tag.
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+        with:
+          version: 0.13.0
+          enable-cache: false
+      - run: rustup toolchain install
+      - name: Tag a release if a published package changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="$(scripts/tag-release.sh)"
+          if [ -n "$tag" ]; then
+            gh workflow run ci.yml --ref "$tag"
+          fi
 
   check-release:
     if: startsWith(github.ref, 'refs/tags/v')

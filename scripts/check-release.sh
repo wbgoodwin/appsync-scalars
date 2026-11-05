@@ -10,11 +10,17 @@ tag="$1"
 version="${tag#v}"
 status=0
 
-# A tag publishes whatever commit it points at, so that has to be code that reached main.
+# A tag publishes whatever commit it points at, so that has to be code that reached main. An
+# automatic release adds one commit on top, which may only set versions.
 git fetch --quiet origin main
 if ! git merge-base --is-ancestor HEAD origin/main; then
-  echo "$(git rev-parse --short HEAD) isn't on main, so switch to main and pull first" >&2
-  status=1
+  other_changes="$(git diff --name-only HEAD^ HEAD -- . \
+    ':(exclude)crates/appsync-scalars/Cargo.toml' ':(exclude)bindings/python/pyproject.toml' \
+    ':(exclude)bindings/js/package.json' ':(exclude)Cargo.lock' ':(exclude)bindings/python/uv.lock')"
+  if [ -n "$other_changes" ] || ! git merge-base --is-ancestor HEAD^ origin/main; then
+    echo "$(git rev-parse --short HEAD) isn't on main, or is more than a version change on top of it" >&2
+    status=1
+  fi
 fi
 
 check() {

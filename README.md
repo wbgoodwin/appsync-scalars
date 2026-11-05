@@ -69,23 +69,33 @@ scripts/build-wasm.sh
 
 ## Releasing
 
-GitHub Actions runs the tests, and builds and tests a wheel on Linux, macOS and Windows, for every pull request and push to `main`.
+GitHub Actions runs the tests, and builds and tests each package, for every pull request and push to `main`.
 
-To release, set the new version in `crates/appsync-scalars/Cargo.toml`, `bindings/python/pyproject.toml` and `bindings/js/package.json`, and run `cargo check` to update `Cargo.lock`. Merge that to `main`, then check it and push a tag:
+Merging a change to a published package releases it. Once the checks pass on `main`, the workflow picks the next patch version and tags it. It then repeats every check, publishes to crates.io, PyPI and npm, adds the `bindings/go/v1.2.3` tag Go needs, and installs each package from its registry to check it against every recorded AppSync result. Merges that only touch CI, tests or this README don't release anything.
+
+For a minor or major version, set it in your pull request, and the merge releases that version instead:
 
 ```bash
-git switch main && git pull && scripts/check-release.sh v1.2.3 && git tag v1.2.3 && git push origin v1.2.3
+scripts/set-version.sh 1.3.0
 ```
 
-Rulesets stop release tags being moved or deleted, because registries and Go's checksum database keep a version forever. If a tag turns out to be wrong, release the next version instead. `main` only takes pull requests that pass the `ci-passed` check.
+The version on `main` can lag behind the latest release, because each patch version goes in a commit that only its tag points at. The tags are the record of what was released.
 
-The workflow repeats every check, publishes to crates.io, PyPI and npm, and adds the `bindings/go/v1.2.3` tag Go needs. It then installs each package from its registry and checks it against every recorded AppSync result. It skips anything already on a registry, so rerunning a partly failed release is safe.
+Rulesets stop release tags being moved or deleted, because registries and Go's checksum database keep a version forever. If a release fails partway, rerun the failed jobs, which skip anything already on a registry. If its run never started, start it from the tag:
 
-Publishing stores no tokens. Each registry needs a trusted publisher for this repository, with the workflow `ci.yml` and the environment `release`. PyPI can set one up before the first release. crates.io and npm need the first version published by hand, and npm's publisher must allow `npm publish`.
+```bash
+gh workflow run ci.yml --ref v1.2.3
+```
+
+Publishing stores no tokens. Each registry has a trusted publisher for this repository, with the workflow `ci.yml` and the environment `release`. `main` only takes pull requests that pass the `ci-passed` check.
 
 ### Release candidates
 
-To try a release on the real registries first, use a version like `1.2.3-rc.1`, written as `1.2.3rc1` in `pyproject.toml`, and push the tag `v1.2.3-rc.1`. The same workflow runs, and normal installs keep getting the last stable version. Release candidates stay in each registry's version history, so save them for risky changes.
+To try a release on the real registries first, set a version like `1.2.3-rc.1` in your pull request. The merge releases it through the same workflow, and normal installs keep getting the last stable version. Release candidates stay in each registry's version history, so save them for risky changes. When you're done testing, set the final version the same way, because other merges carry on from the last stable version.
+
+```bash
+scripts/set-version.sh 1.2.3-rc.1
+```
 
 | Language | Install a release candidate |
 |---|---|
