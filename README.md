@@ -1,19 +1,76 @@
 # appsync-scalars
 
-Validates the AWS AppSync date and time scalars (`AWSDate`, `AWSTime`, `AWSDateTime` and `AWSTimestamp`) with one Rust implementation, available in Rust, Python, JavaScript and Go.
+[![CI](https://github.com/wbgoodwin/appsync-scalars/actions/workflows/ci.yml/badge.svg)](https://github.com/wbgoodwin/appsync-scalars/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/appsync-scalars)](https://pypi.org/project/appsync-scalars/)
+[![npm](https://img.shields.io/npm/v/appsync-scalars)](https://www.npmjs.com/package/appsync-scalars)
+[![crates.io](https://img.shields.io/crates/v/appsync-scalars)](https://crates.io/crates/appsync-scalars)
+[![Go Reference](https://pkg.go.dev/badge/github.com/wbgoodwin/appsync-scalars/bindings/go.svg)](https://pkg.go.dev/github.com/wbgoodwin/appsync-scalars/bindings/go)
+
+Checks whether a value is a valid AWS AppSync `AWSDate`, `AWSTime`, `AWSDateTime` or `AWSTimestamp`, so you can catch a bad value before AppSync rejects the whole request. One Rust validator powers the Python, JavaScript, Rust and Go packages, so they all give the same answer.
 
 The rules come from results recorded from a live AppSync API, which differ from AWS's written descriptions. See [What AppSync accepts](#what-appsync-accepts).
 
-## Usage
+## Quickstart
 
-| Language | Install | Guide |
-|---|---|---|
-| Python | `pip install appsync-scalars` | [Python README](bindings/python/README.md), including Pydantic field types |
-| JavaScript and TypeScript | `npm install appsync-scalars` | [JavaScript README](bindings/js/README.md) |
-| Rust | `cargo add appsync-scalars` | [Rust README](crates/appsync-scalars/README.md) |
-| Go | `go get github.com/wbgoodwin/appsync-scalars/bindings/go` | [Go README](bindings/go/README.md) |
+### Python
+
+```python
+# pip install appsync-scalars
+from appsync_scalars import is_aws_date, validate_aws_datetime
+
+is_aws_date("1970-01-01+05:30")  # True
+validate_aws_datetime("2021-01-11T12:30:24")  # ValueError: invalid AWSDateTime: time zone offset is required
+```
+
+### JavaScript and TypeScript
+
+```js
+// npm install appsync-scalars
+import { isAWSDate, validateAWSDateTime } from "appsync-scalars";
+
+isAWSDate("1970-01-01+05:30"); // true
+validateAWSDateTime("2021-01-11T12:30:24"); // AppSyncScalarError: invalid AWSDateTime: time zone offset is required
+```
+
+### Rust
+
+```rust
+// cargo add appsync-scalars
+use appsync_scalars::{is_aws_date, validate_aws_datetime};
+
+assert!(is_aws_date("1970-01-01+05:30"));
+assert!(validate_aws_datetime("2021-01-11T12:30:24").is_err());
+```
+
+### Go
+
+```go
+// go get github.com/wbgoodwin/appsync-scalars/bindings/go
+import appsyncscalars "github.com/wbgoodwin/appsync-scalars/bindings/go"
+
+appsyncscalars.IsAWSDate("1970-01-01+05:30") // true
+err := appsyncscalars.ValidateAWSDateTime("2021-01-11T12:30:24") // *appsyncscalars.Error
+```
+
+### Next steps
+
+Each scalar has a function that returns a boolean and one that reports why a value is invalid. The `AWSTimestamp` functions take an integer in Python and JavaScript, and the integer's text in Rust and Go.
+
+For the full API, see the guide for your language:
+
+- [Python](bindings/python/README.md), including Pydantic field types
+- [JavaScript and TypeScript](bindings/js/README.md)
+- [Rust](crates/appsync-scalars/README.md)
+- [Go](bindings/go/README.md)
 
 ## What AppSync accepts
+
+| Scalar | Valid examples |
+|---|---|
+| `AWSDate` | `1970-01-01`, `1970-01-01Z`, `1970-01-01+05:30`, `-2017-05-01` |
+| `AWSTime` | `12:30`, `12:30:24.500`, `12:30:24-07:00` |
+| `AWSDateTime` | `2021-01-11T12:30Z`, `1970-01-01T12:00:00.123456789+05:30` (the offset is required) |
+| `AWSTimestamp` | `1610368224`, `-123123` (whole seconds since 1970) |
 
 AppSync's descriptions of these scalars are accurate for ordinary values. It also accepts and rejects some values they don't mention, and this library follows AppSync:
 
@@ -36,12 +93,14 @@ AppSync gave the same verdict for a GraphQL variable and for resolver output on 
 | Path | Purpose |
 |---|---|
 | [`crates/appsync-scalars`](crates/appsync-scalars/src/lib.rs) | The validator: Rust with no dependencies |
-| [`crates/appsync-scalars-wasm`](crates/appsync-scalars-wasm/src/lib.rs) | The WebAssembly module, about 4 KB, shared by JavaScript and Go |
-| [`bindings/python`](bindings/python/pyproject.toml) | Native extension built with PyO3 and maturin, plus the Pydantic types |
-| [`bindings/js`](bindings/js/index.js) | npm package that embeds the module, so it has no install step or platform-specific builds |
-| [`bindings/go`](bindings/go/appsyncscalars.go) | Go module that runs the embedded module through wazero, with no cgo |
-| [`conformance/smoke.json`](conformance/smoke.json) | Test cases every language runs |
-| [`conformance/`](conformance/README.md) | The live AppSync test suite |
+| [`crates/appsync-scalars-wasm`](crates/appsync-scalars-wasm/src/lib.rs) | The WebAssembly module, about 5 KB, shared by JavaScript and Go |
+| [`bindings/python`](bindings/python/README.md) | Native extension built with PyO3 and maturin, plus the Pydantic types |
+| [`bindings/js`](bindings/js/README.md) | npm package that embeds the module, so it has no install step or platform-specific builds |
+| [`bindings/go`](bindings/go/README.md) | Go module that runs the embedded module through wazero, with no cgo |
+| [`conformance/`](conformance/README.md) | The live AppSync test suite, and the results it recorded in `vectors/` |
+| [`conformance/smoke.json`](conformance/smoke.json) | Test cases every language's unit tests run |
+| [`conformance/acceptance/`](conformance/acceptance/) | Checks an installed package against those cases and every recorded result |
+| [`scripts/`](scripts/) | Building, testing and releasing |
 
 Other languages with a WebAssembly runtime can load the same module. Its interface is described in [`crates/appsync-scalars-wasm/src/lib.rs`](crates/appsync-scalars-wasm/src/lib.rs).
 
@@ -87,7 +146,7 @@ Rulesets stop release tags being moved or deleted, because registries and Go's c
 gh workflow run ci.yml --ref v1.2.3
 ```
 
-Publishing stores no tokens. Each registry has a trusted publisher for this repository, with the workflow `ci.yml` and the environment `release`. `main` only takes pull requests that pass the `ci-passed` check.
+Publishing stores no tokens. Each registry has a trusted publisher for this repository, with the workflow `ci.yml` and the environment `release`. `main` only takes squash-merged pull requests with an approval and passing `ci-passed` and CodeQL checks, which repository admins can bypass.
 
 ### Release candidates
 
@@ -103,3 +162,7 @@ scripts/set-version.sh 1.2.3-rc.1
 | JavaScript and TypeScript | `npm install appsync-scalars@next` |
 | Rust | `cargo add appsync-scalars@=1.2.3-rc.1` |
 | Go | `go get github.com/wbgoodwin/appsync-scalars/bindings/go@v1.2.3-rc.1` |
+
+## License
+
+[MIT](LICENSE)
