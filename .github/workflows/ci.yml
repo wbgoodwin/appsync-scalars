@@ -1,15 +1,12 @@
 name: CI
 
 # Every pull request and push to main runs the tests, then builds each package and tests it
-# installed. A merge that changes a published package then tags a release. A tag like v1.2.3 or
-# v1.2.3-rc.1 runs the same tests, publishes, and then tests what the registries serve. See
-# "Releasing" in README.md.
+# installed. A merge that changes a published package then tags a release and starts a run on
+# that tag, which repeats the tests, publishes, and then tests what the registries serve. Pushing
+# a tag doesn't start anything, so only this pipeline releases. See "Releasing" in README.md.
 on:
   push:
     branches: [main]
-    tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
-      - "v[0-9]+.[0-9]+.[0-9]+-rc.[0-9]+"
   pull_request:
   workflow_dispatch:
 
@@ -208,8 +205,7 @@ jobs:
             [ "$result" = success ]
           done
 
-  # A tag pushed with this workflow's token can't start a run by itself, so this starts one, which
-  # tests and publishes exactly what the tag holds.
+  # Starts a run on the new tag, which tests and publishes exactly what the tag holds.
   tag-release:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: ci-passed
