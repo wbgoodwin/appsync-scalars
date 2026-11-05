@@ -110,6 +110,20 @@ mod tests {
         assert_eq!(run(0, &[0xff, 0xfe]), reason_code(Reason::Format));
         assert_eq!(run(99, b"2021-01-11"), reason_code(Reason::Format));
         assert_eq!(appsync_validate(0, INPUT_CAPACITY + 1), reason_code(Reason::Format));
+
+        // Hosts can send any bytes, so every result has to be valid or a known reason.
+        let mut state = 0x9E37_79B9_7F4A_7C15_u64;
+        let mut next = move || {
+            state ^= state << 13;
+            state ^= state >> 7;
+            state ^= state << 17;
+            state
+        };
+        for _ in 0..50_000 {
+            let bytes: Vec<u8> = (0..next() % 48).map(|_| next() as u8).collect();
+            let code = run((next() % 5) as u32, &bytes);
+            assert!(code == 0 || reason_message(code).is_some(), "{bytes:?} gave {code}");
+        }
     }
 
     #[test]

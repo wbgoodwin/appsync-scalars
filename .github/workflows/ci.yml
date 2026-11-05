@@ -30,6 +30,18 @@ jobs:
       - name: Test, including the recorded AppSync results
         run: cargo test
 
+  rust-minimum:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build the crate on the oldest Rust it says it supports
+        run: |
+          version="$(sed -n 's/^rust-version = "\(.*\)"$/\1/p' crates/appsync-scalars/Cargo.toml)"
+          rustup toolchain install "$version" --profile minimal
+          cargo "+$version" check --locked -p appsync-scalars
+
   wasm:
     runs-on: ubuntu-24.04
     steps:
@@ -193,7 +205,7 @@ jobs:
   # The one check the main branch ruleset requires, so changing a matrix never means changing it.
   ci-passed:
     if: always()
-    needs: [rust, wasm, javascript, go, acceptance, wheel, sdist]
+    needs: [rust, rust-minimum, wasm, javascript, go, acceptance, wheel, sdist]
     runs-on: ubuntu-24.04
     steps:
       - name: Fail unless every job passed
@@ -345,6 +357,32 @@ jobs:
             git tag "$tag" "$GITHUB_SHA"
             git push origin "refs/tags/$tag"
           fi
+
+  # Records what each release contains, from the pull requests merged since the one before.
+  github-release:
+    needs: [publish-crate, publish-python, publish-npm, tag-go-module]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # Finding the previous release needs the tags.
+          persist-credentials: false
+      - name: Create the GitHub Release, unless it already exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="$GITHUB_REF_NAME"
+          if gh release view "$tag" > /dev/null 2>&1; then
+            echo "$tag already has a release"
+            exit 0
+          fi
+          previous="$(git -c versionsort.suffix=-rc. tag --list 'v[0-9]*' --sort=-v:refname \
+            | awk -v tag="$tag" 'found { print; exit } $0 == tag { found = 1 }')"
+          args=(--verify-tag --generate-notes --notes-start-tag "$previous")
+          case "$tag" in *-*) args+=(--prerelease) ;; esac
+          gh release create "$tag" "${args[@]}"
 
   # Installs what the registries now serve, like a new user would. Python runs on every platform
   # because each has its own wheel.

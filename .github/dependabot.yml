@@ -1,0 +1,32 @@
+# Merging an update to a package's own dependencies publishes a new version of it. Updates to
+# actions and to the conformance recorder don't.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      rust:
+        patterns: ["*"]
+  - package-ecosystem: gomod
+    directory: /bindings/go
+    schedule:
+      interval: monthly
+    groups:
+      go:
+        patterns: ["*"]
+  - package-ecosystem: uv
+    directory: /bindings/python
+    schedule:
+      interval: monthly
+    groups:
+      python:
+        patterns: ["*"]
